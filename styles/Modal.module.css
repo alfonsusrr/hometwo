@@ -1,0 +1,53 @@
+.ReactModalPortal > div {
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    transition: opacity 200ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+@layer components {
+    .modal {
+        @apply bg-dark-primary-gray text-left text-white outline-none max-w-3xl px-10 py-16 font-display rounded-xl
+    }
+
+    .ReactModalPortal .ReactModal__Overlay--before-close .modal{
+        transform: translateY(50px);
+        transition-duration: 200ms; 
+        transition-timing-function: ease-in;
+        opacity: 0
+    }
+
+    .modal__title {
+        @apply text-5xl font-bold mr-32 mb-10
+    }
+
+    .modal__body {
+        @apply text-lg mr-2 break-all mt-3
+    }
+
+    .modal__form {
+        @apply mt-4 disabled:text-black
+    }
+
+    .modal__form__input {
+        @apply border-none outline-none h-10 w-[80%] mr-3 rounded-md p-2 text-dark-primary-gray
+    }
+
+    .modal__form__button {
+        @apply bg-primary-orange rounded-md w-28 h-10 outline-none border-none text-white cursor-pointer text-base;
+        @apply font-bold hover:bg-secondary-orange disabled:opacity-60 disabled:hover:bg-primary-orange;
+    }
+}

@@ -1,0 +1,41 @@
+@layer components {
+    .header {
+        @apply w-screen h-20 bg-primary-orange flex items-center
+    }
+
+    .header__logo {
+        @apply ml-32 mr-3 relative h-12 w-12
+    }
+
+    .header__title {
+        @apply font-bold text-2xl text-white
+    }
+
+    .header__nav {
+        @apply ml-auto mr-24 flex
+    }
+
+    .header__nav__list {
+        @apply text-slate-100 text-base mx-3
+    }
+    
+    .header__nav__list:after {
+        display:block;
+        content: '';
+        border-bottom: solid 3px #ffffff;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+    }
+
+    .header__nav__list:hover:after {
+        transform: scaleX(1);
+    }
+
+    .footer {
+        @apply bg-white border-t border-gray-200 h-10 w-screen fixed bottom-0 flex px-20
+    }
+
+    .footer__info {
+        @apply text-gray-400 py-2
+    }
+}

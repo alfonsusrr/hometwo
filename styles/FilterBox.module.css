@@ -1,0 +1,28 @@
+@layer components {
+    .ReactModalPortal .ReactModal__Overlay--after-open .filter-modal {
+        transform: translateY(-25px);
+        transition-duration: 200ms; 
+        transition-timing-function: ease-in;
+    }
+    .ReactModalPortal .ReactModal__Overlay--before-close .filter-modal {
+        transform: translateY(100px);
+        transition-duration: 200ms; 
+        transition-timing-function: ease-in;
+    }
+
+
+    .filter-modal {
+        @apply sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-1/2 bg-white h-5/6 rounded-lg border-none drop-shadow-md outline-none p-4;
+    }
+
+    .filter-modal__head {
+        @apply flex items-center border-b-2 pb-2
+    }
+
+    .filter-modal__close {
+        @apply text-lg mx-4
+    }
+    .filter-modal__title {
+        @apply text-lg text-center flex-grow
+    }
+}

@@ -1,0 +1,17 @@
+@layer components {
+    .searchbar {
+        @apply w-[100%] h-10 ml-8 pr-4 bg-white border-none rounded-3xl flex drop-shadow-md
+    }
+
+    .searchbar__input {
+        @apply w-[85%] m-2 p-2 outline-none mr-2
+    }
+
+    .searchbar__button {
+        @apply w-8 h-8 my-1 ml-auto text-secondary-orange text-xl
+    }
+
+    .searchbar__filter {
+        @apply w-8 h-8 ml-1 my-1 text-dark-brown text-xl
+    }
+}
