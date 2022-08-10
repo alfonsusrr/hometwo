@@ -2,7 +2,13 @@
 @import url('./Layout.module.css');
 @import url('./SearchBar.module.css');
 @import url('./DisplayPlaces.module.css');
+@import url('./DoubleRangeSlider.module.css');
 @import url('./FilterBox.module.css');
+@import url('./AuthModal.module.css');
+@import url('./NavBarOwner.module.css');
+@import url('./OwnerPage.module.css');
+@import url('./PropertyForm.module.css');
+@import url('./DateRangePicker.module.css');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 @tailwind base;
@@ -59,8 +65,61 @@ input:-webkit-autofill {
     @apply text-base text-slate-600
   }
 
-
   .container {
-    @apply my-16 mx-20
+    @apply pt-header
   }
+
+  .page-container {
+    @apply py-16 px-8 md:px-16 lg:px-20 
+  }
+
+  .primary-button {
+    @apply bg-primary-orange rounded-full h-10 text-white text-lg py-1 px-6 cursor-pointer
+  }
+
+  .primary-button.disabled {
+    @apply opacity-40 cursor-default
+  }
+
+  .primary-button.disabled:hover {
+    @apply bg-primary-orange
+  }
+
+  .primary-button:hover {
+    @apply bg-secondary-orange
+  }
+
+  .underline-button {
+    @apply font-semibold underline
+  }
+
+  .underline-button:hover {
+    @apply text-primary-orange
+  }
+
+  .input-group__title {
+    @apply font-normal text-lg mb-2
+  }
+
+  .input-group__input-box {
+    @apply bg-white border border-gray-400 rounded-lg p-3 h-10
+  }
+
+  .input-group__input-box:focus {
+    @apply outline-none border-2
+  }
+
+  .loader-container {
+    @apply w-screen h-screen text-center absolute top-[50%]
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-md m-2
+  }
+
 }

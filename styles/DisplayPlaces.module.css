@@ -1,13 +1,13 @@
 @layer components {
     .placeslist {
-        @apply my-4 flex
+        @apply my-4 grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-4 auto-cols-fr sm:justify-center
     }
     .card {
-        @apply w-72 h-[400px] bg-white drop-shadow-lg rounded-lg mr-4
+        @apply h-[400px] bg-white drop-shadow-lg rounded-lg mr-4
     }
 
     .card__image img {
-        @apply rounded-tl-lg rounded-tr-lg
+        @apply rounded-tl-lg rounded-tr-lg h-[200px] object-cover object-center
     }
 
     .card__details {

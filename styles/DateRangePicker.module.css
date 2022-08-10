@@ -1,0 +1,48 @@
+@layer components {
+    .daterangepicker {
+        @apply flex items-center
+    }
+
+    .daterangepicker__input-box {
+        @apply relative
+    }
+
+    .daterangepicker__icon {
+        @apply absolute right-3 top-2 text-gray-400
+    }
+
+    .daterangepicker__calendar {
+        @apply absolute top-16 right-3 w-64 h-64 bg-white rounded-xl p-3 select-none;
+        box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+        z-index: 20;
+    }
+
+    .daterangepicker__calendar__head {
+        @apply grid grid-cols-3 items-center
+    }
+
+    .daterangepicker__calendar__title {
+        @apply text-lg font-bold text-center
+    }
+
+    .daterangepicker__calendar__title-text {
+        @apply text-lg font-bold text-center px-2 py-1 hover:bg-gray-100 cursor-pointer rounded-lg
+    }
+
+    .daterangepicker__calendar__left-arrow {
+        @apply ml-2 cursor-pointer
+    }
+
+    .daterangepicker__calendar__right-arrow {
+        @apply ml-auto mr-2 cursor-pointer
+    }
+
+    .daterangepicker__calendar__days {
+        @apply grid grid-cols-7 auto-cols-auto text-primary-orange font-sans text-center font-semibold flex-1
+    }
+
+    .daterangepicker__calendar__month {
+        @apply py-2 px-3 hover:bg-gray-100 rounded-lg cursor-pointer
+    }
+    
+}

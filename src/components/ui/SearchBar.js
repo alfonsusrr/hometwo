@@ -17,7 +17,7 @@ export default function SearchBar() {
     }
 
     return (
-        <div className="w-[30%]">
+        <div className="xl:w-[35%] lg:w-[30%] md:w-[35%] w-[70%]">
             <form className='searchbar'>
                 <input className='searchbar__input' placeholder="Find Location"/>
                 <button className="searchbar__button" onClick={handleSearch} type="submit">

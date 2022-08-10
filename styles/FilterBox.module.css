@@ -1,6 +1,5 @@
 @layer components {
     .ReactModalPortal .ReactModal__Overlay--after-open .filter-modal {
-        transform: translateY(-25px);
         transition-duration: 200ms; 
         transition-timing-function: ease-in;
     }
@@ -12,11 +11,12 @@
 
 
     .filter-modal {
-        @apply sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-1/2 bg-white h-5/6 rounded-lg border-none drop-shadow-md outline-none p-4;
+        @apply w-[100%] md:w-10/12 lg:w-10/12 xl:w-9/12 bg-white h-[100%] md:h-5/6 rounded-lg border-none drop-shadow-md outline-none p-4;
+        @apply overflow-y-scroll overflow-x-hidden overscroll-y-contain relative;
     }
 
     .filter-modal__head {
-        @apply flex items-center border-b-2 pb-2
+        @apply flex items-center border-b pb-2 sticky
     }
 
     .filter-modal__close {
@@ -24,5 +24,110 @@
     }
     .filter-modal__title {
         @apply text-lg text-center flex-grow
+    }
+
+    .filter-modal__form {
+        @apply grid lg:grid-cols-2 p-4 
+    }
+    
+    .filter-form__group {
+        @apply my-5
+    }
+
+    .filter-form__col {
+        @apply px-4
+    }
+
+    .filter-group__title {
+        @apply font-normal text-lg mb-2
+    }
+
+    .filter-input {
+        @apply bg-white border border-gray-400 rounded-lg p-3 h-10
+    }
+
+    .filter-input--large {
+        @apply filter-input w-[100%] 
+    }
+
+    .filter-input--small {
+        @apply filter-input w-36 mr-4
+    }
+
+    .filter-form__checkboxes {
+        @apply flex flex-wrap
+    }
+
+    .filter-form__checkbox-group {
+        @apply mx-2;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        position: relative;
+    }
+
+    .filter-form__checkbox {
+        @apply opacity-0 w-0 h-0 cursor-pointer
+    }
+
+    .filter-form__checkmark {
+        @apply w-4 h-4 bg-white border-primary-orange border-2 rounded-lg inline-block cursor-pointer
+    }
+
+    .filter-form__checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .filter-form__checkmark:after {
+        left: 6px;
+        top: 4px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+    .filter-form__checkbox:checked  ~ .filter-form__checkmark:after {
+        display: block;
+    }
+
+    .filter-form__checkbox:checked ~ .filter-form__checkmark {
+        @apply bg-primary-orange
+    }
+
+    .filter-form__amenities {
+        @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-2
+    }
+
+    .filter-form__type-box {
+        @apply border-gray-400 border w-[50%] h-20 rounded-lg cursor-pointer mr-3;
+        @apply flex flex-wrap items-center p-3 text-dark-primary-gray select-none
+    }
+
+    .filter-form__type-box.active {
+        @apply border-primary-orange border-2 text-primary-orange;
+        transition: 50ms ease-in
+    }
+
+    .type-box__icon {
+        @apply text-4xl lg:text-3xl
+    }
+
+    .type-box__text {
+        @apply text-lg xl:text-xl font-bold ml-4
+    }
+
+    .filter-form__rounded-checkbox {
+        @apply h-10 border-gray-400 border w-auto rounded-full p-2 cursor-pointer select-none
+    }
+
+    .filter-form__rounded-checkbox.active {
+        @apply border-primary-orange border-2 text-primary-orange
     }
 }

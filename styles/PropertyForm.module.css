@@ -1,0 +1,148 @@
+@layer components {
+    .nav-property-form {
+        @apply w-16 h-[calc(100vh_-_2rem)] fixed top-header left-0 lg:w-64 px-2 lg:px-3 py-8 overflow-y-scroll
+    }
+
+    .nav-property-form__title {
+        @apply text-xl font-bold font-body lg:block hidden
+    }
+
+    .nav-property-form__nav {
+        @apply my-8
+    }
+
+    .nav-property-form__item {
+        @apply flex items-center gap-3 select-none my-6
+    }
+
+    .nav-property-form__item.completed {
+        @apply text-primary-orange
+    }
+
+    .nav-property-form__item.completed > .nav-property-form__icon{ 
+        @apply border-primary-orange
+    }
+
+    .nav-property-form__icon {
+        @apply p-1 text-xl border-2 border-dark-primary-gray w-10 h-10 rounded-full text-center
+    }
+
+    .nav-property-form__text {
+        @apply text-lg font-light hidden lg:block
+    }
+
+    .property-form {
+        @apply absolute bg-gray-100 left-16 lg:left-64 p-8 w-[calc(100vw_-_4rem)] lg:w-[calc(100vw_-_16rem)] overflow-y-scroll;
+        @apply accent-primary-orange
+    }
+
+
+    .property-form__section {
+        @apply w-full h-[100%] p-6 bg-white shadow-lg rounded-xl my-6
+    }
+
+    .property-form__section__title {
+        @apply text-xl font-bold mb-5
+    }
+
+    .property-form__section__items {
+        @apply my-2
+    }
+
+    .property-form__section__item {
+        @apply flex items-start my-4 flex-wrap
+    }
+
+    .property-form-item__label {
+        @apply md:w-[30%] w-[100%]
+    }
+
+    .property-form-item__input {
+        @apply flex-grow md:pl-6 pt-2 md:pt-0 relative
+    }
+
+    .property-form-item__input input {
+        @apply border border-gray-300 p-2 rounded-lg w-[100%] 
+    }
+
+    .property-form-item__input input:focus {
+        @apply border-primary-orange outline-none ring ring-pastel-orange
+    }
+
+    .property-form-item__input input[type='range']:focus {
+        @apply ring-0 
+    }
+
+    .property-form-item__input input[type='range'] {
+        @apply ring-0 border-none outline-none
+    }
+
+    .property-form-item__input textarea {
+        @apply border border-gray-300 p-2 rounded-lg w-[100%] h-32
+    }
+
+    .property-form-item__input textarea:focus {
+        @apply border-primary-orange outline-none ring ring-pastel-orange
+    }
+
+    .property-form__select input:focus {
+        @apply ring-0
+    }
+
+    .property-type__buttons {
+        @apply flex items-center gap-4
+    }
+
+    .property-type__button {
+        @apply w-36 h-16 border border-gray-400 rounded-lg flex gap-2 items-center text-xl justify-center
+    }
+
+    .property-type__button.active {
+        @apply text-primary-orange border-primary-orange border-2
+    }
+
+    .react-select__option {
+        @apply px-4 py-2 cursor-pointer rounded-md
+    }
+
+    .react-select__option:hover {
+        @apply bg-pastel-orange
+    }
+
+    .react-select__option_selected {
+        @apply bg-gray-300
+    }
+
+    .property-form__grid-checkbox {
+        @apply grid 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 md:grid-cols-1 auto-cols-max
+    }
+
+    .property-form__grid-checkbox--large {
+        @apply grid 2xl:grid-cols-2 xl:grid-cols-2 lg:grid-cols-1 grid-cols-1 md:grid-cols-1 auto-cols-max
+    }
+
+    .grid-checkbox__checkbox-item {
+        @apply flex items-center text-primary-orange gap-2
+    }
+
+    .grid-checkbox__input {
+        @apply w-8 flex items-center justify-center
+    }
+
+    .grid-checkbox__input input{
+        @apply w-5 h-5 rounded-md focus:ring-2 focus:ring-pastel-orange accent-primary-orange bg-white text-primary-orange
+    }
+
+    .grid-checkbox__label {
+        @apply ml-4
+    }
+
+    .property-form__date-input {
+        @apply w-[45%]
+    }
+
+    .property-form__picture-box {
+        @apply w-32 h-32 border-4 border-gray-200 rounded-xl border-dashed cursor-pointer flex items-center justify-center;
+        @apply text-3xl text-gray-200
+    }
+}

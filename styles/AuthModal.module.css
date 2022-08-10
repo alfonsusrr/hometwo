@@ -1,0 +1,115 @@
+@layer components {
+    .auth-modal  {
+        @apply bg-white w-[100%] h-[80%] bottom-0 absolute sm:relative sm:w-96 sm:h-[85%] border-none rounded-t-xl sm:rounded-xl outline-none p-3 overflow-y-scroll;
+        @apply flex flex-col;
+        transition: width 150ms ease-in-out;
+        transition: height 200ms ease-in-out
+    }
+
+    .auth-modal.choose-role {
+        @apply md:w-[36rem] h-[60%]
+    }
+
+    .auth-modal__head {
+        @apply filter-modal__head border-none mt-2
+    }
+
+    .auth-modal__close {
+        @apply filter-modal__close text-2xl flex-grow
+    }
+
+    .auth-modal__body {
+        @apply p-2
+    }
+
+    .auth-modal__role-box {
+        @apply h-24 rounded-2xl py-2 px-3 text-lg font-semibold my-3 cursor-pointer flex items-center;
+        box-shadow: 2px 0px 10px 0.5px rgba(0, 0, 0, 0.1);
+    }
+
+    .auth-modal__role-box > img {
+        @apply h-24 w-24
+    }
+
+    .auth-modal__role-box:hover {
+        box-shadow: 2px 0px 10px 0.5px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-page {
+        @apply px-4 py-2 flex flex-col justify-center flex-grow
+    }
+
+    .login-alert {
+        @apply bg-secondary-alert  p-2 rounded-lg my-3 text-sm text-center text-alert
+    }
+
+    .login-input-group {
+        @apply mb-4
+    }
+
+    .login-input-group__title {
+        @apply input-group__title text-sm font-semibold
+    }
+
+    .login-input-group__input-box {
+        @apply input-group__input-box w-[100%]
+    }
+
+    .login-input-group__input-box.alert {
+        @apply border-alert
+    }
+    
+    .login-input-group__alert {
+        @apply text-alert ml-2 text-sm font-bold bg-white pt-[1px]
+    }
+
+    .login-page__choose-line {
+        @apply text-sm text-gray-400 text-center mt-3 flex items-center mb-4
+    }
+
+    .login-page__choose-line::before {
+        @apply h-[1px] bg-gray-400 w-[100%] block mr-[16px];
+        content: ""
+    }
+
+    .login-page__choose-line::after {
+        @apply h-[1px] bg-gray-400 w-[100%] block ml-[16px];
+        content: ""
+    }
+
+    .login-others__box {
+        @apply w-[100%] h-12 flex border border-gray-400 p-4 rounded-lg items-center font-semibold cursor-pointer select-none my-2
+    }
+
+    .login-others__box:hover {
+        @apply border-primary-orange border-2
+    }
+
+    .login-others__box.disabled {
+        @apply opacity-40 cursor-default
+    }
+
+    .login-others__box.disabled:hover {
+        @apply border border-gray-400
+    }
+
+    .login-text {
+        @apply text-sm text-center
+    }
+
+    .login-text .login-link {
+        @apply inline text-primary-orange cursor-pointer
+    }
+
+    .login-text .login-link:hover {
+        @apply underline text-secondary-orange
+    }
+
+    .PhoneInput {
+        --PhoneInputCountryFlag-borderColor: rgba(0,0,0,0.01)
+    }
+
+    input[type="tel"] {
+        @apply outline-none px-2
+    }
+}

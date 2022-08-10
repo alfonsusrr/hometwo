@@ -1,0 +1,69 @@
+@layer components {
+    .sidebar-owner {
+        @apply fixed left-0 bottom-footer top-header bg-white h-screen w-60 py-3 overflow-x-hidden;
+        transition: width 250ms ease-out;
+    }
+
+    .sidebar-owner__navs {
+        @apply flex flex-col items-start 
+    }
+
+    .sidebar-owner.hide-sidebar {
+        @apply w-16;
+        transition: width 250ms ease-out;
+    }
+
+    .sidebar-owner__hide {
+        @apply flex mt-5 mb-10 items-center text-gray-700 cursor-pointer px-4
+    }
+
+    .sidebar__nav-item-box {
+        @apply flex-grow w-[100%]
+    }
+
+    .sidebar__nav-item {
+        @apply my-2 flex relative gap-4 cursor-pointer px-4 py-4 rounded-lg 
+    }
+
+    .sidebar__nav-item:hover {
+        @apply bg-gray-100
+    }
+
+    .sidebar__nav-item.active-section {
+        @apply text-primary-orange
+    }
+
+    .sidebar__nav-item.active-page::before {
+        @apply h-14 w-[4px] bg-primary-orange rounded-full absolute left-0 top-0;
+        content: ""
+    }
+
+    .sidebar__nav-subitem.active-page::before {
+        @apply h-8 w-[4px] bg-primary-orange rounded-full absolute left-0 top-0;
+        content: ""
+    }
+
+    .sidebar__nav-item__icon {
+        @apply text-2xl w-10
+    }
+
+    .sidebar__nav-item__text {
+        @apply font-bold truncate
+    }
+
+    .sidebar__nav-item__text.disabled {
+
+    }
+
+    .page-container--owner {
+        @apply bg-gray-100 h-screen
+    }
+
+    .sidebar__nav-subitem {
+        @apply m-2 pl-16 cursor-pointer py-1 rounded-lg
+    }
+
+    .sidebar__nav-subitem:hover {
+        @apply bg-gray-100
+    }
+}

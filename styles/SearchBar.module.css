@@ -1,6 +1,6 @@
 @layer components {
     .searchbar {
-        @apply w-[100%] h-10 ml-8 pr-4 bg-white border-none rounded-3xl flex drop-shadow-md
+        @apply w-[100%] h-10 ml-3 lg:ml-8 pr-4 bg-white border-none rounded-3xl flex drop-shadow-md
     }
 
     .searchbar__input {

@@ -1,0 +1,415 @@
+[
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad7e"
+        },
+        "name": "Alabama",
+        "abbr": "AL"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad7f"
+        },
+        "name": "Alaska",
+        "abbr": "AK"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad80"
+        },
+        "name": "American Samoa",
+        "abbr": "AS"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad81"
+        },
+        "name": "Arizona",
+        "abbr": "AZ"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad82"
+        },
+        "name": "Arkansas",
+        "abbr": "AR"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad83"
+        },
+        "name": "California",
+        "abbr": "CA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad84"
+        },
+        "name": "Colorado",
+        "abbr": "CO"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad85"
+        },
+        "name": "Connecticut",
+        "abbr": "CT"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad86"
+        },
+        "name": "Delaware",
+        "abbr": "DE"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad87"
+        },
+        "name": "District Of Columbia",
+        "abbr": "DC"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad88"
+        },
+        "name": "Federated States Of Micronesia",
+        "abbr": "FM"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad89"
+        },
+        "name": "Florida",
+        "abbr": "FL"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad8a"
+        },
+        "name": "Georgia",
+        "abbr": "GA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad8b"
+        },
+        "name": "Guam",
+        "abbr": "GU"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad8c"
+        },
+        "name": "Hawaii",
+        "abbr": "HI"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad8d"
+        },
+        "name": "Idaho",
+        "abbr": "ID"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad8e"
+        },
+        "name": "Illinois",
+        "abbr": "IL"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad8f"
+        },
+        "name": "Indiana",
+        "abbr": "IN"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad90"
+        },
+        "name": "Iowa",
+        "abbr": "IA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad91"
+        },
+        "name": "Kansas",
+        "abbr": "KS"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad92"
+        },
+        "name": "Kentucky",
+        "abbr": "KY"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad93"
+        },
+        "name": "Louisiana",
+        "abbr": "LA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad94"
+        },
+        "name": "Maine",
+        "abbr": "ME"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad95"
+        },
+        "name": "Marshall Islands",
+        "abbr": "MH"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad96"
+        },
+        "name": "Maryland",
+        "abbr": "MD"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad97"
+        },
+        "name": "Massachusetts",
+        "abbr": "MA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad98"
+        },
+        "name": "Michigan",
+        "abbr": "MI"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad99"
+        },
+        "name": "Minnesota",
+        "abbr": "MN"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad9a"
+        },
+        "name": "Mississippi",
+        "abbr": "MS"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad9b"
+        },
+        "name": "Missouri",
+        "abbr": "MO"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad9c"
+        },
+        "name": "Montana",
+        "abbr": "MT"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad9d"
+        },
+        "name": "Nebraska",
+        "abbr": "NE"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad9e"
+        },
+        "name": "Nevada",
+        "abbr": "NV"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ad9f"
+        },
+        "name": "New Hampshire",
+        "abbr": "NH"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada0"
+        },
+        "name": "New Jersey",
+        "abbr": "NJ"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada1"
+        },
+        "name": "New Mexico",
+        "abbr": "NM"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada2"
+        },
+        "name": "New York",
+        "abbr": "NY"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada3"
+        },
+        "name": "North Carolina",
+        "abbr": "NC"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada4"
+        },
+        "name": "North Dakota",
+        "abbr": "ND"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada5"
+        },
+        "name": "Northern Mariana Islands",
+        "abbr": "MP"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada6"
+        },
+        "name": "Ohio",
+        "abbr": "OH"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada7"
+        },
+        "name": "Oklahoma",
+        "abbr": "OK"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada8"
+        },
+        "name": "Oregon",
+        "abbr": "OR"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294ada9"
+        },
+        "name": "Palau",
+        "abbr": "PW"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adaa"
+        },
+        "name": "Pennsylvania",
+        "abbr": "PA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adab"
+        },
+        "name": "Puerto Rico",
+        "abbr": "PR"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adac"
+        },
+        "name": "Rhode Island",
+        "abbr": "RI"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adad"
+        },
+        "name": "South Carolina",
+        "abbr": "SC"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adae"
+        },
+        "name": "South Dakota",
+        "abbr": "SD"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adaf"
+        },
+        "name": "Tennessee",
+        "abbr": "TN"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb0"
+        },
+        "name": "Texas",
+        "abbr": "TX"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb1"
+        },
+        "name": "Utah",
+        "abbr": "UT"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb2"
+        },
+        "name": "Vermont",
+        "abbr": "VT"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb3"
+        },
+        "name": "Virgin Islands",
+        "abbr": "VI"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb4"
+        },
+        "name": "Virginia",
+        "abbr": "VA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb5"
+        },
+        "name": "Washington",
+        "abbr": "WA"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb6"
+        },
+        "name": "West Virginia",
+        "abbr": "WV"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb7"
+        },
+        "name": "Wisconsin",
+        "abbr": "WI"
+    },
+    {
+        "_id": {
+            "$oid": "62f283f995174a825294adb8"
+        },
+        "name": "Wyoming",
+        "abbr": "WY"
+    }
+]

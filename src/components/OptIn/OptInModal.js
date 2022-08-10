@@ -1,22 +1,39 @@
 import ReactModal from 'react-modal';
-import { app, db } from '../../../firebase/firebaseConfig'
-import { ref, child, push, set} from "firebase/database"
+// import { app, db } from '../../../firebase/firebaseConfig'
+// import { ref, child, push, set} from "firebase/database"
+import Cookies from 'universal-cookie'
 import { useState } from 'react';
 import validator from 'validator'
 
 export default function optinmodal(props) {
     const [validEmail, setValidEmail] = useState(false)
 
-    const handleOptInSubmit = function (e) {
+    const handleOptInSubmit = async function (e) {
         e.preventDefault()
         const email = e.target.parentNode.querySelector('#email').value
 
-        const newMailRef = push(child(ref(db), 'mails'))
-        set(newMailRef, {
-            email,
-            optedIn: true
+        // const newMailRef = push(child(ref(db), 'mails'))
+        // set(newMailRef, {
+        //     email,
+        //     optedIn: true
+        // })
+
+        const response = await fetch('/api/user/optIn', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email
+            })
         })
 
+        const result = await response.json()
+        if (result.success) {
+            const cookies = new Cookies()
+            cookies.set('opted-in', true, { path: '/'})
+        }
         props.handleCloseOption()
     }
 

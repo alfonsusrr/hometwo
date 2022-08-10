@@ -24,6 +24,30 @@ const initialState = [
         isHosted: false,
         startAvailable: (new Date('October 1, 22')).getTime(),
         endAvailable: (new Date('November 20, 22')).getTime(),
+    },
+    {
+        id: 3,
+        location: 'San Diego, California',
+        price: 492,
+        paymentPer: 'day',
+        image: 'https://a0.muscache.com/im/pictures/miso/Hosting-49381739/original/ddca4b48-7044-4e29-8978-540dc9415df0.jpeg?im_w=720',
+        description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet',
+        facility: [],
+        isHosted: false,
+        startAvailable: (new Date('October 1, 22')).getTime(),
+        endAvailable: (new Date('November 20, 22')).getTime(),
+    },
+    {
+        id: 4,
+        location: 'Los Angeles, California',
+        price: 492,
+        paymentPer: 'day',
+        image: 'https://a0.muscache.com/im/pictures/miso/Hosting-49381739/original/ddca4b48-7044-4e29-8978-540dc9415df0.jpeg?im_w=720',
+        description: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet',
+        facility: [],
+        isHosted: false,
+        startAvailable: (new Date('October 1, 22')).getTime(),
+        endAvailable: (new Date('November 20, 22')).getTime(),
     }
 ]
 

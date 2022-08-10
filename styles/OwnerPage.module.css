@@ -1,0 +1,48 @@
+@layer components {  
+    .page-container--owner {
+        @apply fixed h-header left-sidebar-expand bg-gray-100 w-[calc(100%_-_240px)] h-full py-12 pl-12 pr-12;
+        transition: all 250ms ease-out;
+    }
+
+    .page-container--owner.hide-sidebar {
+        @apply left-sidebar w-[calc(100%_-_64px)];
+        transition: all 250ms ease-out;
+    }
+
+    .property-status {
+        @apply flex gap-4 my-8
+    }
+
+    .property-status__item {
+        @apply bg-white w-36 h-36 rounded-xl p-3 flex flex-col shadow-md
+    }
+
+    .property-status__name {
+        @apply text-right
+    }
+
+    .property-status__value {
+        @apply text-right text-2xl font-bold mt-auto
+    }
+
+    .action-box {
+        @apply w-[100%] sm:w-[450px] h-44 sm:h-48 bg-white rounded-xl p-4 shadow-md
+    }
+
+    .action-box__title {
+        @apply text-xl font-bold
+    }
+
+    .action-box__btn {
+        @apply flex gap-2 my-2 border border-dark-primary-gray border-opacity-30 rounded-xl p-2 items-center cursor-pointer
+    }
+
+    .action-box__btn:hover {
+        @apply border-opacity-70
+    }
+
+
+    .action-box__btn__icon {
+        @apply text-5xl text-center p-3
+    }
+}

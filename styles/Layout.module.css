@@ -1,18 +1,18 @@
 @layer components {
     .header {
-        @apply w-screen h-20 bg-primary-orange flex items-center
+        @apply w-screen h-header bg-primary-orange flex items-center fixed top-0 z-50;
     }
 
     .header__logo {
-        @apply ml-32 mr-3 relative h-12 w-12
+        @apply ml-12 lg:ml-20 xl:ml-32 mr-3 relative h-12 w-12
     }
 
     .header__title {
-        @apply font-bold text-2xl text-white
+        @apply font-bold text-2xl text-white hidden lg:block
     }
 
     .header__nav {
-        @apply ml-auto mr-24 flex
+        @apply ml-auto lg:mr-20 mr-10 md:flex items-center hidden
     }
 
     .header__nav__list {
@@ -31,11 +31,49 @@
         transform: scaleX(1);
     }
 
+    .nav__profile-box {
+        @apply relative
+    }
+
+    .nav__profile {
+        @apply border border-white py-1 px-4 rounded-full text-white cursor-pointer ml-2 flex items-center
+    }
+
+    .nav__profile-text {
+        @apply truncate max-w-[50px] select-none
+    }
+
+    .nav__profile:hover {
+        @apply bg-white text-primary-orange shadow-md
+    }
+
+    .nav__profile.logged-in {
+        @apply bg-white text-primary-orange shadow-md
+    }
+
+    .profile-dropdown {
+        @apply absolute top-12 bg-white shadow-lg py-2 px-4 w-[100%] rounded-lg cursor-pointer opacity-100 z-50;
+        transition: all 250ms ease-in-out;
+    }
+
+    .profile-dropdown.closed {
+        @apply opacity-0 invisible;
+        transform: scaleY(-100px);
+    }
+
+    .profile-dropdown__item {
+        @apply my-1 text-base
+    }
+
+    .profile-dropdown__item:hover {
+        @apply text-primary-orange font-semibold
+    }
+
     .footer {
-        @apply bg-white border-t border-gray-200 h-10 w-screen fixed bottom-0 flex px-20
+        @apply bg-white border-t border-gray-200 h-footer w-screen fixed bottom-0 flex px-20
     }
 
     .footer__info {
-        @apply text-gray-400 py-2
+        @apply text-gray-400 py-1
     }
 }
