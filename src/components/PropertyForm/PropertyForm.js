@@ -260,8 +260,14 @@ export default function PropertyForm() {
     }, [currentPosition])
 
     // ---- Date Picker
-    const handleDateChange = () => {
-
+    const handleDateChange = (startDate, endDate) => {
+        handleChangeFormInput({
+            availability: {
+                ...formInput.availability,
+                startDate: startDate,
+                endDate: endDate
+            }
+        })
     }
 
     return (

@@ -3,7 +3,7 @@ import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons"
 import { useState, useRef} from 'react'
 
 export default function MonthCalendar (props) {
-    const { className, year, setMonth, setCalendarType } = props
+    const { className, year, setMonth, setYear, setCalendarType, month:currentMonth} = props
 
     const months = [
         [
@@ -24,22 +24,36 @@ export default function MonthCalendar (props) {
         ]
     ]
 
-    const handleChangeMonth = () =>{
-
+    const handleChangeMonth = async (month) =>{
+        await setMonth(month.toString())
+        setCalendarType("date")
     }
 
     return (
         <div className={className}>
             <div className="daterangepicker__calendar__head">
-                <div className="daterangepicker__calendar__left-arrow">
+                <div 
+                    className="daterangepicker__calendar__left-arrow"
+                    onClick={() => {
+                        setYear((parseInt(year) - 1).toString())
+                    }}
+                >
                     <FontAwesomeIcon icon={faAngleLeft}></FontAwesomeIcon>
                 </div>
-                <div className="daterangepicker__calendar__title">
+                <div 
+                    className="daterangepicker__calendar__title"
+                    onClick={() => {setCalendarType("year")}}
+                >
                     <div className="daterangepicker__calendar__title-text">
-                        2022
+                        {year}
                     </div>
                 </div>
-                <div className="daterangepicker__calendar__right-arrow">
+                <div 
+                    className="daterangepicker__calendar__right-arrow"
+                    onClick={() => {
+                        setYear((parseInt(year) + 1).toString())
+                    }}
+                >
                     <FontAwesomeIcon icon={faAngleRight}></FontAwesomeIcon>
                 </div>
             </div>
@@ -51,8 +65,8 @@ export default function MonthCalendar (props) {
                                 quarter.map((month) => {
                                     return (
                                         <div
-                                            className="daterangepicker__calendar__month"
-                                            onClick={handleChangeMonth}
+                                            className={`daterangepicker__calendar__month ${month.month === parseInt(currentMonth) ? "active" : ""}`}
+                                            onClick={() => {handleChangeMonth(month.month)}}
                                         >
                                             {month.name}
                                         </div>

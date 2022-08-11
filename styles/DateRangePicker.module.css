@@ -12,21 +12,37 @@
     }
 
     .daterangepicker__calendar {
-        @apply absolute top-16 right-3 w-64 h-64 bg-white rounded-xl p-3 select-none;
+        @apply absolute top-16  w-64 bg-white rounded-xl p-3 select-none;
         box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
         z-index: 20;
     }
 
+    .daterangepicker__calendar.start {
+        @apply left-3
+    }
+
+    .daterangepicker__calendar.end {
+        @apply right-3
+    }
+
+    .daterangepicker__calendar.large {
+        @apply h-72
+    }
+
+    .daterangepicker__calendar.small {
+        @apply h-52
+    }
+
     .daterangepicker__calendar__head {
-        @apply grid grid-cols-3 items-center
+        @apply grid grid-cols-7 items-center
     }
 
     .daterangepicker__calendar__title {
-        @apply text-lg font-bold text-center
+        @apply text-base font-bold text-center col-span-5
     }
 
     .daterangepicker__calendar__title-text {
-        @apply text-lg font-bold text-center px-2 py-1 hover:bg-gray-100 cursor-pointer rounded-lg
+        @apply text-lg font-bold text-center px-2 py-1 hover:bg-gray-100 cursor-pointer rounded-lg font-sans
     }
 
     .daterangepicker__calendar__left-arrow {
@@ -42,7 +58,50 @@
     }
 
     .daterangepicker__calendar__month {
-        @apply py-2 px-3 hover:bg-gray-100 rounded-lg cursor-pointer
+        @apply py-1 px-3 hover:bg-gray-100 rounded-lg cursor-pointer
     }
     
+    .daterangepicker__calendar__dates {
+        @apply grid grid-cols-7 grid-flow-row
+    }
+
+    .daterangepicker__calendar__date {
+        @apply text-center py-1 cursor-pointer
+    }
+
+    .daterangepicker__calendar__date.other-months { 
+        @apply text-gray-400
+    }
+
+    .daterangepicker__calendar__date:hover {
+        @apply bg-gray-100
+    }
+
+    .daterangepicker__calendar__date.active--end {
+        @apply bg-primary-orange rounded-r-lg text-white
+    }
+
+    .daterangepicker__calendar__date.active--start {
+        @apply bg-primary-orange rounded-l-lg text-white
+    }
+
+    .daterangepicker__calendar__date.active {
+        @apply bg-gray-200
+    }
+
+    .daterangepicker__calendar__month.active {
+        @apply bg-primary-orange rounded-lg text-white
+    }
+
+    .daterangepicker__calendar__years {
+        @apply grid grid-cols-4 grid-flow-row gap-1 mt-3
+    }
+
+    .daterangepicker__calendar__year {
+        @apply text-center my-1 rounded-lg hover:bg-gray-100 cursor-pointer px-1 py-1 font-medium
+    }
+    
+    .daterangepicker__calendar__year.active {
+        @apply bg-primary-orange text-white 
+    }
 }

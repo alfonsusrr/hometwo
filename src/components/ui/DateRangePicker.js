@@ -12,6 +12,11 @@ export default function DateRangePicker (props) {
 
     // Format date: 'YYYY-MM-DD'
 
+    const getDecade = (date) => {
+        const year = getYear(date)
+        return (parseInt(year) - (parseInt(year) % 10)).toString()
+    }
+
     const getYear = (date) => {
         return date.slice(0, 4)
     }
@@ -27,7 +32,6 @@ export default function DateRangePicker (props) {
     const limit = (val, max) => {
         // input month 2x or more
         if (val.length === 1 && val[0] > max[0]) {
-            console.log("a")
             val = '0' + val
         }
 
@@ -68,14 +72,50 @@ export default function DateRangePicker (props) {
         return date
     }
 
-    const handleStartDateChange = (values) => {
-        const newStartDate = convertToDate(values.value)
+    const convertDisplay = (d) => {
+        const date = getMonth(d) + getDate(d) + getYear(d).slice(2, 4)
+        return date
+    }
+    
+    // Manage input focus
+    const [onEndCalendarFocus, setOnEndCalendarFocus] = useState(false)
+    const [onStartCalendarFocus, setOnStartCalendarFocus] = useState(false)
+
+    const startDateInput = useRef()
+    const endDateInput = useRef()
+
+    // Calendar handling
+    
+    const [calendarType, setCalendarType] = useState("date")
+
+    const [startMonth, setStartMonth] = useState(getMonth(startDate))
+    const [startDay, setStartDay] = useState(getDate(startDate))
+    const [startYear, setStartYear] = useState(getYear(startDate))
+    const [startDecade, setStartDecade] = useState(getDecade(startDate))
+    const [startCalendarDay, setStartCalendarDay] = useState({})
+
+
+    const [endMonth, setEndMonth] = useState(getMonth(endDate))
+    const [endDay, setEndDay] = useState(getDate(endDate))
+    const [endYear, setEndYear] = useState(getYear(endDate))
+    const [endDecade, setEndDecade] = useState(getDecade(endDate))
+    const [endCalendarDay, setEndCalendarDay] = useState({})
+
+    const resetStartCalendar = () => {
+        setStartMonth(getMonth(startDate))
+        setStartYear(getYear(startDate))
+        setStartDay(getDate(startDate))
+        setStartDecade(getDecade(startDate))
     }
 
-    const handleEndDateChange = (values) => {
-        const newEndDate = convertToDate(values.value)
+    const resetEndCalendar = () => {
+        setEndMonth(getMonth(endDate))
+        setEndYear(getYear(endDate))
+        setEndDay(getDate(endDate))
+        setEndDecade(getDecade(endDate))
     }
 
+    // Show calendar or not (true/false)
     const [startCalendar, setStartCalendar] = useState(false)
     const [endCalendar, setEndCalendar] = useState(false)
 
@@ -83,9 +123,11 @@ export default function DateRangePicker (props) {
         if (show) {
             setStartCalendar(show)
         } else {
-            setTimeout(() => {
-                setStartCalendar(show)
-            }, 100)
+            setStartCalendar(show)
+
+            if (!onStartCalendarFocus) {
+                resetStartCalendar()
+            }
         }
     }
 
@@ -94,33 +136,101 @@ export default function DateRangePicker (props) {
             setEndCalendar(show)
         } else {
             setEndCalendar(show)
+
+            if (!onEndCalendarFocus) {
+                resetEndCalendar()
+            }
+        }
+    }
+    
+    // Handling value change 
+    useEffect(() => {
+        const decade = getDecade(startDate)
+        const year = getYear(startDate)
+        const month = getMonth(startDate)
+        const date = getDate(startDate)
+
+        setStartMonth(month)
+        setStartYear(year)
+        setStartDecade(decade)
+        setStartDay(date)
+        setCalendarType("date")
+    }, [startDate])
+
+    useEffect(() => {
+        const decade = getDecade(endDate)
+        const year = getYear(endDate)
+        const month = getMonth(endDate)
+        const date = getDate(endDate)
+
+        setEndMonth(month)
+        setEndYear(year)
+        setEndDecade(decade)
+        setEndDay(date)
+        setCalendarType("date")
+    }, [endDate])
+
+    const handleStartDateChange = (values) => {
+        let newStartDate = values.value
+        if (!values?.valid) {
+            newStartDate = convertToDate(values.value)
+        }
+        let newEndDate = endDate
+
+        if (moment(newStartDate, "YYYY-MM-DD", true).isValid()) {
+            if (moment(newStartDate).isSameOrAfter(moment(endDate))) {
+                newEndDate = moment(newStartDate).add(30, "d").format("YYYY-MM-DD")
+            }
+
+            onValueChange(newStartDate, newEndDate)
         }
     }
 
-    const [onEndCalendarFocus, setOnEndCalendarFocus] = useState(false)
+    const handleEndDateChange = (values) => {
 
-    const startDateInput = useRef()
-    const endDateInput = useRef()
+        let newEndDate = values.value
+        if (!values?.valid) {
+            newEndDate = convertToDate(values.value)
+        }
 
-    const [calendarType, setCalendarType] = useState("date")
+        let newStartDate = startDate
 
-    const [startMonth, setStartMonth] = useState(getMonth(startDate))
-    const [startDay, setStartDate] = useState(getDate(startDate))
-    const [startYear, setStartYear] = useState(getYear(startDate))
+        if (moment(newEndDate, "YYYY-MM-DD", true).isValid()) {
+            if (moment(newEndDate).isSameOrBefore(moment(startDate))) {
+                newStartDate = moment(newEndDate).subtract(30, "d").format("YYYY-MM-DD")
+            }
+
+            onValueChange(newStartDate, newEndDate)
+        }
+    }
 
 
-    const [endMonth, setEndMonth] = useState(getMonth(endDate))
-    const [endDay, setEndDate] = useState(getDate(endDate))
-    const [endYear, setEndYear] = useState(getYear(endDate))
-    const [endDays, setEndDays] = useState([])
+    // Handling get start and end date of calendar
+    useEffect(() => {
+        const date = endYear + "-" + endMonth + "-" + "01"
+        
+        const day = {
+            startDate: moment(date).startOf("week").toDate(),
+            endDate: moment(date).endOf("month").endOf("week").toDate()
+        }
+        setEndCalendarDay(day)
 
+        const newDecade = (parseInt(endYear) - (parseInt(endYear) % 10)).toString()
+        setEndDecade(newDecade)
+    }, [endMonth, endYear])
 
     useEffect(() => {
-        const date = endYear.toString() + endMonth.toString() + "01"
-        const startCalendar = moment(date).startOf("week")
-        const endCalendar = moment(date).endOf("month").endOf("week")
-        console.log(startCalendar)
-    }, [endMonth, endYear])
+        const date = startYear + "-" + startMonth + "-" + "01"
+        
+        const day = {
+            startDate: moment(date).startOf("week").toDate(),
+            endDate: moment(date).endOf("month").endOf("week").toDate()
+        }
+        setStartCalendarDay(day)
+
+        const newDecade = (parseInt(startYear) - (parseInt(startYear) % 10)).toString()
+        setStartDecade(newDecade)
+    }, [startMonth, startYear])
 
     return (
         <div className="daterangepicker">
@@ -129,17 +239,66 @@ export default function DateRangePicker (props) {
                     className="daterangepicker__input" 
                     format={dateFormat}
                     mask={['M', 'M', 'D', 'D', 'Y', 'Y']}
-                    value={startDate} 
+                    value={convertDisplay(startDate)} 
                     displayType={'input'}
                     placeholder="mm/dd/yy"
                     onValueChange={handleStartDateChange}
                     onFocus={() => {handleShowStartCalendar(true)}}
-                    onBlur={() => {handleShowStartCalendar(true)}}
+                    onBlur={() => {handleShowStartCalendar(false)}}
                     getInputRef={startDateInput}
                 >
                 </NumberFormat>
                 <div className="daterangepicker__icon">
                     <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
+                </div>
+                <div 
+                    className={`daterangepicker__calendar start ${startCalendar || onStartCalendarFocus ? 'block' : 'hide'}
+                        ${calendarType === "date" ? "large" : "small"}
+                    `} 
+                    onMouseEnter={() => {
+                        setOnStartCalendarFocus(true)
+                    }}
+                    onMouseLeave={() => {
+                        setOnStartCalendarFocus(false)
+                    }}
+                    onClick={() => {
+                        startDateInput.current.focus()
+                    }}
+                >   
+                    { startCalendarDay?.startDate ?
+                    <DateCalendar 
+                        className={`${calendarType === "date" ? "block" : "hidden"}`}
+                        setCalendarType={setCalendarType}
+                        endMonth={endMonth}
+                        endYear={endYear}
+                        endDate={endDay}
+                        startMonth={startMonth}
+                        startYear={startYear}
+                        startDate={startDay}
+                        days={startCalendarDay}
+                        setDate={setStartDay}
+                        setMonth={setStartMonth}
+                        setYear={setStartYear}
+                        onDateChange={handleStartDateChange}
+                        type={"start"}
+                    ></DateCalendar> : ""
+                    }
+                    <MonthCalendar 
+                        className={`${calendarType === "month" ? "block" : "hidden"}`}
+                        setCalendarType={setCalendarType}
+                        setMonth={setStartMonth}
+                        setYear={setStartYear}
+                        year={endYear}
+                        month={endMonth}
+                    ></MonthCalendar>
+                    <YearCalendar 
+                        className={`${calendarType === "year" ? "block" : "hidden"}`}
+                        setCalendarType={setCalendarType}
+                        year={endYear}
+                        setYear={setStartYear}
+                        setDecade={setStartDecade}
+                        decade={endDecade}
+                    ></YearCalendar>
                 </div>
             </div>
             <div className="mx-2">
@@ -150,7 +309,7 @@ export default function DateRangePicker (props) {
                     className="daterangepicker__input" 
                     format={dateFormat}
                     mask={['M', 'M', 'D', 'D', 'Y', 'Y']}
-                    value={endDate} 
+                    value={convertDisplay(endDate)} 
                     displayType={'input'}
                     placeholder="mm/dd/yy"
                     onValueChange={handleEndDateChange}
@@ -163,7 +322,9 @@ export default function DateRangePicker (props) {
                     <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
                 </div>
                 <div 
-                    className={`daterangepicker__calendar ${endCalendar || onEndCalendarFocus ? 'block' : 'hide'}`} 
+                    className={`daterangepicker__calendar end ${endCalendar || onEndCalendarFocus ? 'block' : 'hide'}
+                        ${calendarType === "date" ? "large" : "small"}
+                    `} 
                     onMouseEnter={() => {
                         setOnEndCalendarFocus(true)
                     }}
@@ -174,19 +335,39 @@ export default function DateRangePicker (props) {
                         endDateInput.current.focus()
                     }}
                 >   
+                    { endCalendarDay?.startDate ?
                     <DateCalendar 
                         className={`${calendarType === "date" ? "block" : "hidden"}`}
                         setCalendarType={setCalendarType}
-                        month={endMonth}
-                    ></DateCalendar>
+                        endMonth={endMonth}
+                        endYear={endYear}
+                        endDate={endDay}
+                        startMonth={startMonth}
+                        startYear={startYear}
+                        startDate={startDay}
+                        days={endCalendarDay}
+                        setDate={setEndDay}
+                        setMonth={setEndMonth}
+                        setYear={setEndYear}
+                        onDateChange={handleEndDateChange}
+                        type={"end"}
+                    ></DateCalendar> : ""
+                    }
                     <MonthCalendar 
                         className={`${calendarType === "month" ? "block" : "hidden"}`}
                         setCalendarType={setCalendarType}
-                        year={endYear}
+                        setMonth={setEndMonth}
+                        setYear={setEndYear}
+                        year={startYear}
+                        month={startMonth}
                     ></MonthCalendar>
                     <YearCalendar 
                         className={`${calendarType === "year" ? "block" : "hidden"}`}
                         setCalendarType={setCalendarType}
+                        year={startYear}
+                        setYear={setEndYear}
+                        setDecade={setEndDecade}
+                        decade={startDecade}
                     ></YearCalendar>
                 </div>
             </div>
