@@ -9,7 +9,7 @@ import NavBarOwner from '../../src/components/ui/NavBarOwner'
 import PulseLoader from 'react-spinners/PulseLoader'
 import fetchUser from '../../src/utils/fetchUser'
 
-export default function properties() {
+export default function Properties() {
     // ---- Fetching user ----
     const router = useRouter()
     const dispatch = useDispatch()

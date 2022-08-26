@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Cookies from 'universal-cookie'
 import fetchUser from '../src/utils/fetchUser'
 
-export default function index() {
+export default function Home() {
     const cookies = new Cookies()
     const checkOptedIn = !!cookies.get('opted-in')
     const [optedIn, setOptedIn] = useState(checkOptedIn)

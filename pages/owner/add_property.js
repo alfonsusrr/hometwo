@@ -9,7 +9,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 import PropertyForm from "../../src/components/PropertyForm/PropertyForm";
 import fetchUser from '../../src/utils/fetchUser'
 
-export default function addProperty() {
+export default function AddProperty() {
     // ---- Fetching user ----
     const router = useRouter()
     const dispatch = useDispatch()

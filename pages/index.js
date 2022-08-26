@@ -4,7 +4,7 @@ import Footer from '../src/components/Layout/Footer'
 import Landing from "../src/components/Landing/Landing";
 import { useState, useEffect } from "react";
 
-export default function index() {
+export default function Index() {
     const [scrolled, setScrolled] = useState(false)
 
     const handleScroll = () => {
