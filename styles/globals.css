@@ -9,6 +9,7 @@
 @import url('./OwnerPage.module.css');
 @import url('./PropertyForm.module.css');
 @import url('./DateRangePicker.module.css');
+@import url('./Landing.module.css');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 @tailwind base;

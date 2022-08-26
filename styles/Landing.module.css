@@ -1,0 +1,112 @@
+@layer components {
+    .landing__banner {
+        @apply w-screen h-screen relative -mt-header bg-fixed bg-center bg-cover;
+        background-image: url("../public/images/landing/banner-2.jpg")
+    }
+
+    .landing__heading {
+        @apply absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-40
+    }
+
+    .heading__text {
+        @apply absolute top-[40%] px-16 w-[100%] select-none
+    }
+
+    .heading__large {
+        @apply text-4xl font-bold text-white w-[100%] md:w-[70%] lg:w-[50%] mb-6;
+        animation: float-down 1s;
+    }
+
+    .heading__small {
+        @apply text-lg font-light text-white w-[100%] md:w-[50%] lg:w-[40%];
+        animation: float-down 1.25s;
+    }
+
+    @keyframes float-down {
+        from {
+            transform: translateY(-15px)
+        }
+
+        to {
+            transform: translateY(0px)
+        }
+    }
+
+    .landing__content {
+        @apply p-10 w-screen
+    }
+
+    .benefits__title {
+        @apply text-center font-bold text-xl text-primary-orange mb-2;
+        animation: float-down 1s;
+    }
+
+    .benefits__subtitle {
+        @apply font-light text-lg text-center w-[90%] lg:w-[50%] ml-[5%] lg:ml-[25%];
+        animation: float-down 1.5s;
+    }
+
+    .benefits__boxes {
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-flow-row pt-10 items-start gap-y-5
+    }
+
+    .benefits__box {
+        opacity: 0;
+        animation: opacity-change 1s ease-in;
+        animation-fill-mode: forwards;
+    }
+
+    .benefits__box.first {
+        animation-delay: 0s;
+    }
+
+    .benefits__box.second {
+        animation-delay: 1s;
+    }
+
+    .benefits__box.third {
+        animation-delay: 2s;
+    }
+
+    @keyframes opacity-change {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 100%
+        }
+    }
+    .benefits__icon {
+        @apply col-span-2 bg-primary-orange text-white rounded-lg ml-[calc(50%-3.5rem)] mb-4 w-28 h-28 text-6xl text-center py-5 content-center
+    }
+
+    .benefits__heading {
+        @apply text-center font-bold font-sans
+    }
+
+    .benefits__subheading {
+        @apply text-center w-[70%] mx-[15%]
+    }
+
+    .opt-in {
+        @apply w-screen h-[300px] -ml-10 mt-24 relative bg-fixed bg-center bg-cover;
+        background-image: url("../public/images/landing/banner-3.jpg")
+    }
+
+    .opt-in__layer {
+        @apply absolute top-0 left-0 w-screen h-[300px] bg-black bg-opacity-30
+    }
+
+    .join-discord {
+        @apply w-screen py-10 -ml-10 bg-gray-100 mb-footer
+    }
+
+    .join-discord a {
+        @apply text-primary-orange
+    }
+
+    .join-discord a:hover {
+        @apply text-secondary-orange
+    }
+}

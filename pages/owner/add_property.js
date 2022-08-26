@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Header from '../../src/components/Layout/Header';
+import Footer from '../../src/components/Layout/Footer'
 import { useRouter } from "next/router"
 import Head from "next/head"
 import { useSelector, useDispatch} from "react-redux"
@@ -28,12 +30,14 @@ export default function addProperty() {
                 <title>HomeTwo | My Properties </title>
                 <link rel="icon" href="/images/favicon.png" />
             </Head>
+            <Header type="owner"></Header>
             <div className={`loader-container ${!fetched || (fetched && authInfo?.user?.role !== 'owner') ? "block" : "hidden"}`}>
                 <PulseLoader color={"#fd7300"} loading={!fetched} size={20}></PulseLoader>
             </div>
             <div className={`relative ${fetched && authInfo?.user?.role === 'owner' ? "block" : "hidden"}`}>
                 <PropertyForm></PropertyForm>
             </div>
+            <Footer></Footer>
         </div>
     )
 }

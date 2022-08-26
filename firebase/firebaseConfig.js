@@ -4,6 +4,7 @@ import { getDatabase } from "firebase/database"
 
 const firebaseConfig = JSON.parse(process.env.FIREBASE_AUTH);
 
+
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 const db = getDatabase()
 

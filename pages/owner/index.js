@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router"
+import Header from '../../src/components/Layout/Header';
+import Footer from '../../src/components/Layout/Footer'
 import Head from "next/head"
 import Link from "next/link"
 import { useSelector, useDispatch} from "react-redux"
@@ -36,6 +38,7 @@ export default function Dashboard() {
                 <title>HomeTwo | Home Owner</title>
                 <link rel="icon" href="/images/favicon.png" />
             </Head>
+            <Header type="owner"></Header>
             <div>
                 
             </div>
@@ -103,7 +106,8 @@ export default function Dashboard() {
                         </Link>
                     </div>
                 </div>
-            </div>           
+            </div>  
+            <Footer></Footer>         
         </div>
     )
 }

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router"
+import Header from '../../src/components/Layout/Header';
+import Footer from '../../src/components/Layout/Footer'
 import Head from "next/head"
 import { useSelector, useDispatch} from "react-redux"
 import { fetchUserData, toggleAuthBox } from '../../src/features/reducers/authReducer'
@@ -30,6 +32,7 @@ export default function properties() {
                 <title>HomeTwo | My Properties </title>
                 <link rel="icon" href="/images/favicon.png" />
             </Head>
+            <Header type="owner"></Header>
             <div className={`loader-container ${!fetched || (fetched && authInfo?.user?.role !== 'owner')  ? "block" : "hidden"}`}>
                 <PulseLoader color={"#fd7300"} loading={!fetched} size={20}></PulseLoader>
             </div>
@@ -38,6 +41,7 @@ export default function properties() {
                 <div className={`page-container--owner ${expand ? "" : "hide-sidebar"}`}>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     )
 }

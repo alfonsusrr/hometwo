@@ -10,7 +10,8 @@ import { toggleAuthBox, logOut } from '../../features/reducers/authReducer';
 import AuthModal from '../AuthModal/AuthModal';
 import SearchBar from '../ui/SearchBar';
 
-export default function Header() {
+export default function Header(props) {
+    const {type, scroll} = props
     const [isProfileClosed, setIsProfileClosed] = useState(true)
     const router = useRouter()
     const authInfo = useSelector((state) => state.auth)
@@ -34,22 +35,33 @@ export default function Header() {
     }
 
     return (
-        <div className="header">
+        <div className={`header ${type === "landing" && !scroll ? "landing" : ""}`}>
             <Link href="/">
                 <a className="flex items-center">
                     <div className="header__logo">
                         <Image src="/images/logo-transparent.png" layout='fill' objectFit='contain' ></Image>
                     </div>
+                    { type !== "landing" &&
                     <h1 className="header__title">
                         HomeTwo
                     </h1>
+                    }
+
+                    {  type === "landing" &&
+                        <h1 className="font-bold text-2xl text-white">
+                            HomeTwo
+                        </h1>
+                    }
                 </a>
             </Link>
-            <SearchBar/>
+            {
+                type !== "owner" && type !== "help" && type !== "landing" && <SearchBar/>
+            }
+            { type !== "landing" &&
             <div className="header__nav">
                 <a href="/help" className="header__nav__list">Help Center</a>
                 <a href="/contact" className="header__nav__list">Contact Us</a>
-
+                { type !== "landing" &&
                 <div className="nav__profile-box">
                     <div className={`nav__profile ${authInfo.isLoggedIn ? "logged-in" : ""}`} onClick={handleProfileClick}>
                         <FontAwesomeIcon icon={faUser} className="mr-2"></FontAwesomeIcon>
@@ -73,7 +85,9 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
+                }
             </div>
+            }
             <AuthModal></AuthModal>
         </div>
     )

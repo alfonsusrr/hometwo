@@ -1,6 +1,12 @@
 @layer components {
     .header {
         @apply w-screen h-header bg-primary-orange flex items-center fixed top-0 z-50;
+        transition: background-color 0.2s ease-in;
+    }
+
+    .header.landing {
+        @apply bg-black bg-opacity-80;
+        transition: background-color 0.2s ease-in;
     }
 
     .header__logo {
