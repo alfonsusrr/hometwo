@@ -60,13 +60,14 @@ export default function MonthCalendar (props) {
             <div className="daterangepicker__calendar__months">
                 { months.map((quarter) => {
                     return (
-                        <div className="grid grid-cols-4 mt-3 mx-2 gap-1">
+                        <div className="grid grid-cols-4 mt-3 mx-2 gap-1" key={`quarter-${quarter}`}>
                             {
                                 quarter.map((month) => {
                                     return (
                                         <div
                                             className={`daterangepicker__calendar__month ${month.month === parseInt(currentMonth) ? "active" : ""}`}
                                             onClick={() => {handleChangeMonth(month.month)}}
+                                            key={`quarter-${quarter}-month-${month}`}
                                         >
                                             {month.name}
                                         </div>

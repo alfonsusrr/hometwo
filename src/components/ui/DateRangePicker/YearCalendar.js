@@ -57,6 +57,7 @@ export default function YearCalendar (props) {
                             <div 
                                 className={`daterangepicker__calendar__year ${year === parseInt(currentYear) ? "active" : ""}`}
                                 onClick={() => {handleChangeYear(year.toString())}}
+                                key={year}
                             >
                                 {year}
                             </div>

@@ -226,6 +226,7 @@ export default function DateCalendar (props) {
                         }
                         return (
                             <div 
+                                key={day.date}
                                 className={`daterangepicker__calendar__date ${day.type === "current" ? "" : "other-months"}
                                 ${day.date == parseInt(date) && day.month == parseInt(month) && day.year == parseInt(year) ? activeClassName : ""}
                             `}

@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie'
 import { useState } from 'react';
 import validator from 'validator'
 
-export default function optinmodal(props) {
+export default function OptInModal(props) {
     const [validEmail, setValidEmail] = useState(false)
 
     const handleOptInSubmit = async function (e) {
