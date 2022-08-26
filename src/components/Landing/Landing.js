@@ -119,7 +119,9 @@ export default function Landing () {
                         <div className="font-sans font-bold text-center">
                             Join us on Discord 
                         </div>
-                        <img src="https://img.icons8.com/color/48/000000/discord-logo.png" className="ml-4"/>
+                        <div className="w-12 h-10 ml-4 relative">
+                            <Image src="https://img.icons8.com/color/48/000000/discord-logo.png" layout="fill" objectFit="cover"></Image>
+                        </div>
                     </div>
                     <div className="px-[15%] py-3 w-[100%] text-center">
                         We are here to connect international students to talk about studying abroad and to get

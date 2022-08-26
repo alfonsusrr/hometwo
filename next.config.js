@@ -5,6 +5,9 @@ const nextConfig = {
   env: {
     FIREBASE_AUTH: process.env.FIREBASE_AUTH,
     MAPS_API_KEY: process.env.MAPS_API_KEY
+  },
+  images: {
+    domains: ['img.icons8.com']
   }
 }
 
