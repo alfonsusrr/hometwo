@@ -46,7 +46,7 @@ export default function DateCalendar (props) {
         nameOfMonth = months[parseInt(month)]
         activeClassName = "active--end"
         otherActiveClassName = "active--start"
-    } else (type === "start") {
+    } else if (type === "start") {
         year = startYear
         month = startMonth
         date = startDate
