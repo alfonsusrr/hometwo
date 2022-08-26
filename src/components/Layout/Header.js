@@ -16,6 +16,11 @@ export default function Header(props) {
     const router = useRouter()
     const authInfo = useSelector((state) => state.auth)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        setIsProfileClosed(true)
+    }, [])
+
     const handleProfileClick = () => {
         if (!authInfo.isLoggedIn) {
             dispatch(toggleAuthBox())

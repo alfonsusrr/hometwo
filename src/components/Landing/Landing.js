@@ -1,9 +1,40 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding, faCommentsDollar, faEdit, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { useState } from "react";
+import validator from "validator";
+import Cookies from 'universal-cookie';
 
 
 export default function Landing () {
+    const [email, setEmail] = useState("")
+    const [validEmail, setValidEmail] = useState(false)
+
+    const handleValidEmail = function (e) {
+        const email_ = e.target.value
+        setValidEmail(validator.isEmail(email))
+        setEmail(email_)
+    }
+
+    const handleSubmitEmail = async function () {
+        const response = await fetch('/api/user/optIn', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email
+            })
+        })
+
+        const result = await response.json()
+        if (result.success) {
+            setEmail("")
+            const cookies = new Cookies()
+            cookies.set('opted-in', true, { path: '/'})
+        }
+    }
 
     return (
         <div>
@@ -77,8 +108,8 @@ export default function Landing () {
                                 Join now and be one of our first customer
                             </div>
                             <div className="mt-10 flex items-center p-4 bg-white bg-opacity-30 rounded-xl">
-                                <input className="rounded-lg h-10 w-[90%] border-none outline-none p-3" placeholder="Enter your email"></input>
-                                <button className="primary-button ml-3 rounded-lg">Submit</button>
+                                <input className="rounded-lg h-10 w-[90%] border-none outline-none p-3" placeholder="Enter your email" onChange={handleValidEmail} value={email}></input>
+                                <button className={`primary-button ml-3 rounded-lg ${validEmail ? "" : "disabled"}`} disabled={validEmail ? "" : "disabled"} onClick={handleSubmitEmail}>Submit</button>
                             </div>
                         </div>
                     </div>

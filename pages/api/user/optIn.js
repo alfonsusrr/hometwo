@@ -8,6 +8,14 @@ const handler = async (req, res) => {
 
     try {
         const { email } = req.body
+
+        const existingEmail = optInEmail.find({ email: email })
+        if (existingEmail) {
+            return res.status(200).json({
+                success: true,
+                message: 'Opt In success'
+            })
+        }
         const newEmail = new optInEmail({
             email
         })

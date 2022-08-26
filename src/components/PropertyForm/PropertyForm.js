@@ -4,13 +4,14 @@ import FormItem from "./FormItem";
 import Switch from 'react-switch';
 import { GoogleMap, MarkerF, Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImages, faMapLocationDot, faTreeCity, faLocationDot, faKitchenSet, faCalendarCheck, faFileImage, faFileContract, faHouse, faBuilding} from "@fortawesome/free-solid-svg-icons";
+import { faMapLocationDot, faTreeCity, faLocationDot, faKitchenSet, faCalendarCheck, faFileImage, faFileContract, faHouse, faBuilding} from "@fortawesome/free-solid-svg-icons";
 import FormSelect from "./FormSelect";
 import countryOptions from '../../../data/countryOptions'
 import cityOptions from '../../../data/cityOptions'
 import NumberFormat from "react-number-format"
 import DateRangePicker from '../ui/DateRangePicker'
 import moment from "moment"
+import ImageInput from "../ui/ImageInput";
 
 export default function PropertyForm() {
     
@@ -689,44 +690,18 @@ export default function PropertyForm() {
                                         }}
                                     />
                                 </div>
-                                <div className="flex-grow">
-                                    <input type="range" min="10" max="10000" value={formInput.availability.price} onChange={(e) => {
-                                        handleChangeFormInput({
-                                            availability: {
-                                                ...formInput.availability,
-                                                price: e.target.value
-                                            }
-                                        })
-                                    }}></input>
-                                </div>
                             </div>
                         </FormItem>
                     </FormSection>
                     <FormSection title="Add Picture">
                         <FormItem title="Photos of the room" description="add photo(s) of the main room">
                             <div className="flex items-center flex-wrap flex-row gap-3">
-                                <div className="property-form__picture-box">
-                                    <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
-                                </div>
-                                <div className="property-form__picture-box">
-                                    <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
-                                </div>
-                                <div className="property-form__picture-box">
-                                    <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
-                                </div>
-                                <div className="property-form__picture-box">
-                                    <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
-                                </div>
-                                <div className="property-form__picture-box">
-                                    <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
-                                </div>
+                                <ImageInput></ImageInput>
                             </div>
                         </FormItem>
                         <FormItem title="Additional Photos" description="add photo(s) of kitchen, bathroom, outdoor area, etc">
                             <div className="flex items-center flex-wrap">
-                                <div className="property-form__picture-box">
-                                    <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
-                                </div>
+                                <ImageInput></ImageInput>
                             </div>
                         </FormItem>
                     </FormSection>
