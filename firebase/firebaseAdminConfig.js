@@ -1,6 +1,5 @@
 var admin = require("firebase-admin");
 
-console.log(process.env.SERVICE_ACCOUNT_KEY + "aa")
 const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
 
 
