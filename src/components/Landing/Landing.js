@@ -29,6 +29,7 @@ export default function Landing () {
         })
 
         const result = await response.json()
+        console.log(result)
         if (result.success) {
             setEmail("")
             const cookies = new Cookies()

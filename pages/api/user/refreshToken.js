@@ -10,6 +10,7 @@ const methods = ['POST']
 const handler = async (req, res) => {
     withMethodCheck(req, res, methods)
 
+    await dbConnect()
     let accessToken
     let refreshToken
     if (hasCookie('access-token', { req, res })) {

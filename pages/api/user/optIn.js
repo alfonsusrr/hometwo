@@ -1,15 +1,16 @@
 const withMethodCheck = require('../../../middleware/withMethodCheck')
-const dbConnect = require('../../../db/mongoose')
 const optInEmail = require('../../../models/optInEmail')
+import dbConnect from '../../../db/mongoose'
 
 const handler = async (req, res) => {
     const method = ['POST']
     withMethodCheck(req, res, method)
 
+    await dbConnect()
     try {
         const { email } = req.body
 
-        const existingEmail = optInEmail.find({ email: email })
+        const existingEmail = await optInEmail.findOne({ email: email })
         if (existingEmail) {
             return res.status(200).json({
                 success: true,
@@ -21,6 +22,7 @@ const handler = async (req, res) => {
         })
         await newEmail.save()
     } catch(e){
+        console.log(e)
         return res.status(400).json({
             success: false,
             message: 'Opt In failed'
