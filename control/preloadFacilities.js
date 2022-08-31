@@ -1,28 +1,19 @@
 const ObjectId = require('mongoose').Types.ObjectId
 
 const facilities = [
-    'Wifi',
-    'Dryer',
-    'Kitchen',
-    'Air conditioning',
-    'Heater',
-    'Dedicated study room',
 ]
 
 const additional = [
-    'Parking lot',
-    'Security 24/7',
-    'Washer',
-    'Dryer',
-    'TV',
-    'Common room',
-    'Laundry service',
+    'Package Locker',
+    'Fitness Center',
+    'Coworking Lounge',
+    'Bicycle Storage',
+    'Rooftop',
 ]
 
 const features = [
-    'Near bus or subway station',
-    'Near school',
-    'Included electricity and water bill',
+    'Near shopping center',
+    'Near groceries market',
 ]
 
 const f = facilities.map((fac) => {
@@ -58,4 +49,4 @@ const fe = features.map((ff) => {
 let all_features = JSON.stringify(f.concat(a).concat(fe))
 const fs = require('fs')
 
-fs.writeFile('facility.json', all_features, () => {})
+fs.writeFile('newFacility.json', all_features, () => {})

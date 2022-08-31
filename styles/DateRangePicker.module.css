@@ -4,7 +4,11 @@
     }
 
     .daterangepicker__input-box {
-        @apply relative
+        @apply relative sm:w-36 md:w-40 lg:w-48
+    }
+
+    .daterangepicker__input {
+        @apply w-12
     }
 
     .daterangepicker__icon {
@@ -86,6 +90,10 @@
     }
 
     .daterangepicker__calendar__date.active {
+        @apply bg-gray-200
+    }
+
+    .daterangepicker__calendar__date.active-between {
         @apply bg-gray-200
     }
 

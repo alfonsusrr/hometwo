@@ -141,8 +141,36 @@
         @apply w-[45%]
     }
 
+    .additional-price__description {
+        @apply w-[40%] !important
+    }
+
+    .additional-price__price {
+        @apply w-[30%] !important
+    }
+
+    .property-form__image-input {
+        @apply relative
+    }
+
+    .property-form__image-file-input {
+        @apply opacity-0 absolute top-0 left-0 h-full w-full cursor-pointer
+    }
+
     .property-form__picture-box {
         @apply w-32 h-32 border-4 border-gray-200 rounded-xl border-dashed cursor-pointer flex items-center justify-center;
         @apply text-3xl text-gray-200
+    }
+
+    .property-form__picture-box--image {
+        @apply w-32 h-32 relative rounded-lg
+    }
+
+    .property-form__picture-box--image img {
+        @apply w-32 h-32 object-cover rounded-lg
+    }
+
+    .picture-box__action-btn {
+        @apply absolute bottom-3 right-3 flex flex-row gap-1
     }
 }

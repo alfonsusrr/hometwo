@@ -244,7 +244,13 @@ export default function DateRangePicker (props) {
                     placeholder="mm/dd/yy"
                     onValueChange={handleStartDateChange}
                     onFocus={() => {handleShowStartCalendar(true)}}
-                    onBlur={() => {handleShowStartCalendar(false)}}
+                    onBlur={() => {
+                        if (!onStartCalendarFocus) {
+                            handleShowStartCalendar(false)
+                        } else {
+                            startDateInput.current.focus()
+                        }
+                    }}
                     getInputRef={startDateInput}
                 >
                 </NumberFormat>
@@ -269,12 +275,15 @@ export default function DateRangePicker (props) {
                     <DateCalendar 
                         className={`${calendarType === "date" ? "block" : "hidden"}`}
                         setCalendarType={setCalendarType}
-                        endMonth={endMonth}
-                        endYear={endYear}
-                        endDate={endDay}
-                        startMonth={startMonth}
-                        startYear={startYear}
-                        startDate={startDay}
+                        endMonth={getMonth(endDate)}
+                        endYear={getYear(endDate)}
+                        endDate={getDate(endDate)}
+                        startMonth={getMonth(startDate)}
+                        startYear={getYear(startDate)}
+                        startDate={getDate(startDate)}
+                        currDate={startDay}
+                        currMonth={startMonth}
+                        currYear={startYear}
                         days={startCalendarDay}
                         setDate={setStartDay}
                         setMonth={setStartMonth}
@@ -314,7 +323,13 @@ export default function DateRangePicker (props) {
                     placeholder="mm/dd/yy"
                     onValueChange={handleEndDateChange}
                     onFocus={() => {handleShowEndCalendar(true)}}
-                    onBlur={() => {handleShowEndCalendar(false)}}
+                    onBlur={() => {
+                        if (!onEndCalendarFocus) {
+                            handleShowEndCalendar(false)
+                        } else {
+                            endDateInput.current.focus()
+                        }
+                    }}
                     getInputRef={endDateInput}
                 >
                 </NumberFormat>
@@ -339,12 +354,15 @@ export default function DateRangePicker (props) {
                     <DateCalendar 
                         className={`${calendarType === "date" ? "block" : "hidden"}`}
                         setCalendarType={setCalendarType}
-                        endMonth={endMonth}
-                        endYear={endYear}
-                        endDate={endDay}
-                        startMonth={startMonth}
-                        startYear={startYear}
-                        startDate={startDay}
+                        endMonth={getMonth(endDate)}
+                        endYear={getYear(endDate)}
+                        endDate={getDate(endDate)}
+                        startMonth={getMonth(startDate)}
+                        startYear={getYear(startDate)}
+                        startDate={getDate(startDate)}
+                        currDate={endDay}
+                        currMonth={endMonth}
+                        currYear={endYear}
                         days={endCalendarDay}
                         setDate={setEndDay}
                         setMonth={setEndMonth}

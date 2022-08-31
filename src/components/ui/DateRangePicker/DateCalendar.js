@@ -14,6 +14,9 @@ export default function DateCalendar (props) {
         startDate,
         startMonth,
         startYear,
+        currYear,
+        currMonth,
+        currDate,
         setDate, 
         setMonth, 
         setYear, 
@@ -38,19 +41,24 @@ export default function DateCalendar (props) {
     }
 
     let year, month, date, nameOfMonth, activeClassName, otherActiveClassName
-    
+
+    year = currYear
+    month = currMonth
+    date = currDate
+
+    nameOfMonth = months[parseInt(month)]
+
+    let activeYear, activeMonth, activeDate
     if (type === "end") {
-        year = endYear
-        month = endMonth
-        date = endDate
-        nameOfMonth = months[parseInt(month)]
+        activeYear = endYear
+        activeMonth = endMonth
+        activeDate = endDate
         activeClassName = "active--end"
         otherActiveClassName = "active--start"
     } else if (type === "start") {
-        year = startYear
-        month = startMonth
-        date = startDate
-        nameOfMonth = months[parseInt(month)]
+        activeYear = startYear
+        activeMonth = startMonth
+        activeDate = startDate
         activeClassName = "active--start"
         otherActiveClassName = "active--end"
     }
@@ -58,22 +66,22 @@ export default function DateCalendar (props) {
     const [daysList, setDaysList] = useState([])
     useEffect(() => {
         // startDate, endDate : moment
-        let { startDate, endDate } = days
-        startDate = moment(startDate)
-        endDate = moment(endDate)
+        let { startDate:startDate_, endDate:endDate_ } = days
+        startDate_ = moment(startDate_)
+        endDate_ = moment(endDate_)
         
-        const startCalendarDate = startDate.date()
-        const endCalendarDate = endDate.date()
-        const endPrevMonth = startDate.endOf("month").date()
+        const startCalendarDate = startDate_.date()
+        const endCalendarDate = endDate_.date()
+        const endPrevMonth = startDate_.endOf("month").date()
         const numOfDays = moment(year + "-" + month + "-01").endOf("month").date()
 
         // Handle calendar start with 1
         let prevMonthDaysList = []
-        if (startDate.month() + 1 !== month) {
+        if (startDate_.month() + 1 !== parseInt(month)) {
             prevMonthDaysList = Array.apply(null, Array(endPrevMonth - startCalendarDate + 1)).map((_, i) => {
                 return {
-                    year: startDate.year(),
-                    month: startDate.month() + 1,
+                    year: startDate_.year(),
+                    month: startDate_.month() + 1,
                     date: startCalendarDate + i,
                     type: 'others'
                 }
@@ -91,11 +99,11 @@ export default function DateCalendar (props) {
 
         // .month() starts with 0
         let nextMonthDaysList = []
-        if (endDate.month() + 1 !== parseInt(month)) {
+        if (endDate_.month() + 1 !== parseInt(month)) {
             nextMonthDaysList = Array.apply(null, Array(endCalendarDate)).map((_, i) => {
                 return {
-                    year: endDate.year(),
-                    month: endDate.month() + 1,
+                    year: endDate_.year(),
+                    month: endDate_.month() + 1,
                     date: 1 + i,
                     type: 'others'
                 }
@@ -106,12 +114,12 @@ export default function DateCalendar (props) {
 
         if (newDaysList.length < 42) {
             let additionalDays = []
-            if (endDate.month() + 1 !== parseInt(month)) {
+            if (endDate_.month() + 1 !== parseInt(month)) {
                 const index = newDaysList.length - 1
                 additionalDays = Array.apply(null, Array(7)).map((_, i) => {
                     return {
-                        year: endDate.year(),
-                        month: endDate.month() + 1,
+                        year: endDate_.year(),
+                        month: endDate_.month() + 1,
                         date: newDaysList[index].date + 1 + i,
                         type: 'others'
                     }
@@ -128,8 +136,19 @@ export default function DateCalendar (props) {
             }
             newDaysList = newDaysList.concat(additionalDays)
         }
-        setDaysList(newDaysList)       
-    }, [days])
+
+        const fixedDaysList = newDaysList.map((day, i) => {
+            const date = `${day.year}-${day.month < 10 ? 0 : ''}${day.month}-${day.date < 10 ? 0 : ''}${day.date}`
+            const start = `${startYear}-${startMonth}-${startDate}`
+            const end = `${endYear}-${endMonth}-${endDate}`
+            
+            return {
+                ...day,
+                between: moment(date).isBetween(start, end)
+            }
+        })
+        setDaysList(fixedDaysList)       
+    }, [days, startDate, endDate, startMonth, endMonth, startYear, endYear])
 
     const handleChangeMonth = (val) => {
         if (val === -1) {
@@ -220,15 +239,17 @@ export default function DateCalendar (props) {
             </div>
             <div className="daterangepicker__calendar__dates">
                 {
-                    daysList.map((day) => {
+                    daysList.map((day, dI) => {
                         if (type === "start") {
-                            console.log(month)
+                            // console.log(month)
                         }
+
                         return (
                             <div 
-                                key={day.date}
+                                key={dI}
                                 className={`daterangepicker__calendar__date ${day.type === "current" ? "" : "other-months"}
-                                ${day.date == parseInt(date) && day.month == parseInt(month) && day.year == parseInt(year) ? activeClassName : ""}
+                                ${day.date == activeDate && day.month == activeMonth && day.year == activeYear ? activeClassName : ""}
+                                ${day.between ? "active-between" : ""}
                             `}
                                 onClick={() => {
                                     handleChangeDate(day.year, day.month, day.date)

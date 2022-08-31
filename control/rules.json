@@ -1,0 +1,44 @@
+[
+    {
+        "_id": {
+            "$oid": "630f676b94ed34c42d4cf4b4"
+        },
+        "label": "24 hours access"
+    },
+    {
+        "_id": {
+            "$oid": "630f676b94ed34c42d4cf4b5"
+        },
+        "label": "No smoking"
+    },
+    {
+        "_id": {
+            "$oid": "630f676b94ed34c42d4cf4b6"
+        },
+        "label": "No sleep over"
+    },
+    {
+        "_id": {
+            "$oid": "630f676b94ed34c42d4cf4b7"
+        },
+        "label": "No pets"
+    },
+    {
+        "_id": {
+            "$oid": "630f676b94ed34c42d4cf4b8"
+        },
+        "label": "No party or event"
+    },
+    {
+        "_id": {
+            "$oid": "630f676b94ed34c42d4cf4b9"
+        },
+        "label": "No loud noise after 11 pm"
+    },
+    {
+        "_id": {
+            "$oid": "630f676b94ed34c42d4cf4ba"
+        },
+        "label": "Keep shared room clean"
+    }
+]

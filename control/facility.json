@@ -1,1 +1,163 @@
-[{"_id":{"$oid":"62f29db73dc97da3dfdcb6d0"},"label":"Wifi","type":"basic"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d1"},"label":"Dryer","type":"basic"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d2"},"label":"Kitchen","type":"basic"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d3"},"label":"Air conditioning","type":"basic"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d4"},"label":"Heater","type":"basic"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d5"},"label":"Dedicated study room","type":"basic"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d6"},"label":"Parking lot","type":"additional"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d7"},"label":"Security 24/7","type":"additional"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d8"},"label":"Washer","type":"additional"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6d9"},"label":"Dryer","type":"additional"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6da"},"label":"TV","type":"additional"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6db"},"label":"Common room","type":"additional"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6dc"},"label":"Laundry service","type":"additional"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6dd"},"label":"Near bus or subway station","type":"feature"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6de"},"label":"Near school","type":"feature"},{"_id":{"$oid":"62f29db73dc97da3dfdcb6df"},"label":"Included electricity and water bill","type":"feature"}]
+[
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d0"
+        },
+        "label": "Wifi",
+        "type": "basic"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d1"
+        },
+        "label": "Private Bathroom",
+        "type": "basic"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d2"
+        },
+        "label": "Kitchen",
+        "type": "basic"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d3"
+        },
+        "label": "Air conditioning",
+        "type": "basic"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d4"
+        },
+        "label": "Heater",
+        "type": "basic"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d5"
+        },
+        "label": "Dedicated study room",
+        "type": "basic"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d6"
+        },
+        "label": "Parking lot",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d7"
+        },
+        "label": "Security 24/7",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d8"
+        },
+        "label": "Washer",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6d9"
+        },
+        "label": "Dryer",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6da"
+        },
+        "label": "TV",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6db"
+        },
+        "label": "Common room",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6dc"
+        },
+        "label": "Laundry service",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6dd"
+        },
+        "label": "Near bus or subway station",
+        "type": "feature"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6de"
+        },
+        "label": "Near school",
+        "type": "feature"
+    },
+    {
+        "_id": {
+            "$oid": "62f29db73dc97da3dfdcb6df"
+        },
+        "label": "Near park",
+        "type": "feature"
+    }
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba72"
+        },
+        "label": "Package Locker",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba73"
+        },
+        "label": "Fitness Center",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba74"
+        },
+        "label": "Coworking Lounge",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba75"
+        },
+        "label": "Bicycle Storage",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba76"
+        },
+        "label": "Rooftop",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba77"
+        },
+        "label": "Near shopping center",
+        "type": "feature"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba78"
+        },
+        "label": "Near groceries market",
+        "type": "feature"
+    }
+]

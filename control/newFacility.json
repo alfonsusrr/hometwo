@@ -1,0 +1,51 @@
+[
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba72"
+        },
+        "label": "Package Locker",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba73"
+        },
+        "label": "Fitness Center",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba74"
+        },
+        "label": "Coworking Lounge",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba75"
+        },
+        "label": "Bicycle Storage",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba76"
+        },
+        "label": "Rooftop",
+        "type": "additional"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba77"
+        },
+        "label": "Near shopping center",
+        "type": "feature"
+    },
+    {
+        "_id": {
+            "$oid": "630f63cf4b9643e9b7ecba78"
+        },
+        "label": "Near groceries market",
+        "type": "feature"
+    }
+]
