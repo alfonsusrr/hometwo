@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { resetLogError, toggleAuthBox, setLogRole } from "../../features/reducers/authReducer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleLeft, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import ChooseRole from "./ChooseRole"
 import LoginPage from "./LoginPage"
 
@@ -19,11 +19,11 @@ export default function AuthModal(props) {
     const [role, setRole] = useState(logRole)
     const [isLoginPage, setLoginPage] = useState(false)
 
-    const handleBack = () => {
+    const handleBack = useCallback(() => {
         dispatch(resetLogError())
         setLoginPage(false)
         setRole(null)
-    }
+    }, [])
 
     const handleChooseRole = (role) => {
         dispatch(setLogRole(role))
@@ -36,6 +36,7 @@ export default function AuthModal(props) {
             handleBack()
         }
     }, [role])
+    
     return (
         <ReactModal
             isOpen={isAuthBoxOpen}

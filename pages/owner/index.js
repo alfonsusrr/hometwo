@@ -26,7 +26,7 @@ export default function Dashboard() {
             router, dispatch, authInfo, fetched, setFetched, 
             role: "owner"
         })
-    }, [fetched])
+    }, [fetched, router, dispatch, authInfo])
 
     // -------
 

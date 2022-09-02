@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Link from "next/link"
@@ -19,7 +19,7 @@ export default function LoginForm (props) {
         setIsEmail(!isEmail)
     }
 
-    const initialInput = {
+    const initialInput = useCallback(() => ({
         user: {
             value: '',
             valid: true,
@@ -30,7 +30,7 @@ export default function LoginForm (props) {
             valid: true,
             alert: ''
         }
-    }
+    }), [])
         
     const [loginInput, setLoginInput] = useState(initialInput)
 
@@ -62,7 +62,7 @@ export default function LoginForm (props) {
         }
     }
 
-    const handleUserChange = (e) => {
+    const handleUserChange = useCallback((e) => {
         const { valid, alert } = validateUser(e.target.value)
         const user = {
             value: e.target.value,
@@ -70,7 +70,7 @@ export default function LoginForm (props) {
             alert
         }
         setLoginInput({ ...loginInput, user })
-    }
+    }, [])
 
     const validatePassword = (password) => {
         if (password === '') {
@@ -204,6 +204,7 @@ export default function LoginForm (props) {
     useEffect(() => {
         setLoginInput(initialInput)
     }, [isEmail])
+
     return (
         <div>
         <form onSubmit={handleLogin} className="login-email">

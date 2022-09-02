@@ -21,7 +21,7 @@ export default function Properties() {
             router, dispatch, authInfo, fetched, setFetched, 
             role: "owner"
         })
-    }, [fetched])
+    }, [fetched, router, dispatch, authInfo])
     // -------
 
     const [expand, setExpand] = useState(true)

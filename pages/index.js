@@ -24,7 +24,7 @@ export default function Index() {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [handleScroll]);
 
     return (
         <div className="container">

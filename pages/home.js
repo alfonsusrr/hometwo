@@ -27,7 +27,7 @@ export default function Home() {
             router, dispatch, authInfo, fetched, setFetched, 
             role: null
         })
-    }, [fetched])
+    }, [fetched, router, dispatch, authInfo])
 
     return (
         <div className="container">

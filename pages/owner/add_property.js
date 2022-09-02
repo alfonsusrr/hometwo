@@ -21,7 +21,7 @@ export default function AddProperty() {
             router, dispatch, authInfo, fetched, setFetched, 
             role: "owner"
         })
-    }, [fetched])
+    }, [fetched, router, dispatch, authInfo])
 
     // ------- Component
     return (

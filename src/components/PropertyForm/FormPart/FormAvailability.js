@@ -73,11 +73,8 @@ export default function FormAvailability(props) {
                 {
                     formInput?.availability?.additionalPrice.map((price, i) => {
                         return (
-                            <div>
-                                <div 
-                                    key={`price-${i}`} 
-                                    className="flex items-center gap-3 mb-2"
-                                >
+                            <div key={`price-${i}`} >
+                                <div className="flex items-center gap-3 mb-2">
                                     <input type="text" 
                                         className={`additional-price__description ${!validityFormInput?.availability?.additionalPrice[i] && isAlertOn ? "alert" : ""}`}
                                         placeholder="Description" 
