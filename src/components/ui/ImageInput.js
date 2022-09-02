@@ -53,7 +53,10 @@ export default function ImageInput(props) {
                         </div>
                         <div 
                             className="bg-white bg-opacity-40 px-2 py-1 rounded-lg text-sm cursor-pointer hover:bg-opacity-60"
-                            onClick={deleteImage}
+                            onClick={() => {
+                                uploadedImage.current.src = ''
+                                deleteImage()
+                            }}
                         >
                             <FontAwesomeIcon icon={faTrashCan}></FontAwesomeIcon>
                         </div>

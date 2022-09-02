@@ -5,10 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faBuilding} from "@fortawesome/free-solid-svg-icons";
 
 export default function FormPropertyInfo(props) {
-    const { handleChangeFormInput, formInput} = props
+    const { handleChangeFormInput, formInput, validityFormInput, isAlertOn, id} = props
     return (
-        <FormSection title="Property Info">
-            <FormItem title="Property Name" description="add a catchy name that describe your property">
+        <FormSection title="Property Info" id={id}>
+            <FormItem 
+                title="Property Name" 
+                description="add a catchy name that describe your property"
+                alert="Property name is required"
+                onAlert={!validityFormInput?.propertyInfo?.name && isAlertOn}
+            >
                 <input 
                     type="text" 
                     placeholder="Property name" 
@@ -49,7 +54,12 @@ export default function FormPropertyInfo(props) {
                     </button>
                 </div>
             </FormItem>
-            <FormItem title="Description" description="brief description of your property">
+            <FormItem 
+                title="Description" 
+                description="brief description of your property"
+                alert="Property description is required"
+                onAlert={!validityFormInput?.propertyInfo?.description && isAlertOn}
+            >
                 <textarea 
                     placeholder="Property description"
                     value={formInput.propertyInfo.description}

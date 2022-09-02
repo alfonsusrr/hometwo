@@ -9,7 +9,7 @@ import countryOptions from '../../../../data/countryOptions'
 import cityOptions from '../../../../data/cityOptions'
 
 export default function FormLocation(props) {
-    const { handleChangeFormInput, formInput, initialFormInput } = props
+    const { handleChangeFormInput, formInput, initialFormInput, validityFormInput, isAlertOn, id} = props
 
     const [stateOptions, setStateOptions] = useState([])
     const [uniOptions, setUniOptions] = useState([])
@@ -56,8 +56,9 @@ export default function FormLocation(props) {
                 const univs = response.data.university
                 setUniOptions(univs.map((uni) => {
                     return {
+                        id: uni.id,
+                        value: uni.id,
                         label: uni.name,
-                        value: uni.id
                     }
                 }))
                 setUniOptionFetched(true)
@@ -182,8 +183,11 @@ export default function FormLocation(props) {
     }, [currentPosition])
 
     return (
-        <FormSection title="Location">
-            <FormItem title="Country" description="">
+        <FormSection title="Location" id={id}>
+            <FormItem 
+                title="Country"
+                description=""
+            >
                 <FormSelect 
                     options={countryOptions}
                     isDisabled={true}
@@ -228,7 +232,11 @@ export default function FormLocation(props) {
                     placeholder="Select city"
                 ></FormSelect>
             </FormItem>
-            <FormItem title="Address" description="don't worry, we will not disclose the exact address. We will just show the approximate location to the user">
+            <FormItem 
+                title="Address" 
+                description="don't worry, we will not disclose the exact address. We will just show the approximate location to the user"
+                onAlert={!validityFormInput?.location?.address && isAlertOn}
+            >
                 { isLoaded ?
                     <Autocomplete
                         onLoad={(autocomplete) => {
@@ -266,7 +274,6 @@ export default function FormLocation(props) {
                             })}
                         ></input>
                     </Autocomplete> : 
-
                     <div role="status" className="p-4 space-y-4 max-w-md rounded border border-gray-200 divide-y divide-gray-200 shadow animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700">
                         <div className="flex justify-between items-center border border-gray-200">
                             <div>
@@ -276,6 +283,11 @@ export default function FormLocation(props) {
                             <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
                         </div>
                     </div>
+                }
+                { !validityFormInput?.location?.address && isAlertOn &&
+                        <div className="property-form-item__alert">
+                            Address is required
+                        </div>
                 }
                 <div className="mt-4">
                 {
@@ -322,7 +334,12 @@ export default function FormLocation(props) {
                 }
                 </div>
             </FormItem>
-            <FormItem title="Nearby School" description="select one (or more) university near the location">
+            <FormItem 
+                title="Nearby School" 
+                description="select one (or more) university near the location"
+                alert="You must add at least one nearby school"
+                onAlert={!validityFormInput?.location?.school && isAlertOn}
+            >
                 <FormSelect 
                     options={uniOptions}
                     isMulti={true}

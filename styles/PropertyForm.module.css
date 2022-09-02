@@ -1,6 +1,6 @@
 @layer components {
     .nav-property-form {
-        @apply w-16 h-[calc(100vh_-_2rem)] fixed top-header left-0 lg:w-64 px-2 lg:px-3 py-8 overflow-y-scroll
+        @apply w-16 h-[calc(100vh_-_2rem)] fixed left-0 lg:w-64 px-2 lg:px-3 py-8 overflow-y-scroll
     }
 
     .nav-property-form__title {
@@ -16,11 +16,11 @@
     }
 
     .nav-property-form__item.completed {
-        @apply text-primary-orange
+        @apply text-secondary-orange
     }
 
     .nav-property-form__item.completed > .nav-property-form__icon{ 
-        @apply border-primary-orange
+        @apply border-secondary-orange
     }
 
     .nav-property-form__icon {
@@ -32,10 +32,9 @@
     }
 
     .property-form {
-        @apply absolute bg-gray-100 left-16 lg:left-64 p-8 w-[calc(100vw_-_4rem)] lg:w-[calc(100vw_-_16rem)] overflow-y-scroll;
+        @apply absolute bg-gray-100 left-16 lg:left-64 px-5 pb-8 w-[calc(100vw_-_4rem)] lg:w-[calc(100vw_-_16rem)] overflow-y-scroll;
         @apply accent-primary-orange
     }
-
 
     .property-form__section {
         @apply w-full h-[100%] p-6 bg-white shadow-lg rounded-xl my-6
@@ -50,7 +49,7 @@
     }
 
     .property-form__section__item {
-        @apply flex items-start my-4 flex-wrap
+        @apply flex items-start my-4 flex-wrap md:flex-nowrap
     }
 
     .property-form-item__label {
@@ -59,6 +58,18 @@
 
     .property-form-item__input {
         @apply flex-grow md:pl-6 pt-2 md:pt-0 relative
+    }
+
+    .property-form-item__alert {
+        @apply text-alert text-sm
+    }
+
+    .property-form-item__input.alert input{
+        @apply border-alert border-2
+    }
+
+    .property-form-item__input.alert textarea{
+        @apply border-alert border-2
     }
 
     .property-form-item__input input {
@@ -85,6 +96,10 @@
         @apply border-primary-orange outline-none ring ring-pastel-orange
     }
 
+    .property-form-item__input.alert .property-form__select input {
+        @apply border-alert border-2
+    }
+    
     .property-form__select input:focus {
         @apply ring-0
     }
@@ -130,7 +145,7 @@
     }
 
     .grid-checkbox__input input{
-        @apply w-5 h-5 rounded-md focus:ring-2 focus:ring-pastel-orange accent-primary-orange bg-white text-primary-orange
+        @apply w-5 h-5 rounded-md focus:ring-2 focus:ring-pastel-orange accent-primary-orange bg-white text-primary-orange cursor-pointer
     }
 
     .grid-checkbox__label {
@@ -145,8 +160,12 @@
         @apply w-[40%] !important
     }
 
+    .additional-price__description.alert, .additional-price__price.alert {
+        @apply border-alert border-2
+    }
+
     .additional-price__price {
-        @apply w-[30%] !important
+        @apply w-[35%] !important
     }
 
     .property-form__image-input {

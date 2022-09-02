@@ -26,54 +26,54 @@ const adminSchema = new mongoose.Schema({
     timestamps: true
 })
 
-userSchema.methods.generateRefreshToken = async function(prevToken, role) {
-    const user = this
+adminSchema.methods.generateRefreshToken = async function(prevToken, role) {
+    const admin = this
 
-    let newTokens = [...user.refreshToken]
+    let newTokens = [...admin.refreshToken]
     if (prevToken) {
         newTokens = newTokens.filter((token) => {
             return token.token != prevToken
         })
     }
 
-    const token = jwt.sign({ uid: user.uid, role }, process.env.JWT_SECRET, { expiresIn: '60d'})
+    const token = jwt.sign({ uid: admin.uid, role }, process.env.JWT_SECRET, { expiresIn: '60d'})
 
-    user.refreshToken = newTokens.concat({ token })
-    await user.save()
+    admin.refreshToken = newTokens.concat({ token })
+    await admin.save()
 
     return token
 }
 
-userSchema.methods.generateAccessToken = async function(prevToken, role) {
-    const user = this
+adminSchema.methods.generateAccessToken = async function(prevToken, role) {
+    const admin = this
 
-    let newTokens = [...user.accessToken]
+    let newTokens = [...admin.accessToken]
     if (prevToken) {
         newTokens = newTokens.filter((token) => {
             return token.token !== prevToken
         })
     }
-    const token = jwt.sign({ uid: user.uid, role }, process.env.JWT_SECRET, { expiresIn: '1d'})
+    const token = jwt.sign({ uid: admin.uid, role }, process.env.JWT_SECRET, { expiresIn: '1d'})
 
-    user.accessToken = newTokens.concat({ token })
-    await user.save()
+    admin.accessToken = newTokens.concat({ token })
+    await admin.save()
 
     return token
 }
 
-userSchema.methods.userLogout = async function(prevTokens) {
-    const user = this
+adminSchema.methods.adminLogout = async function(prevTokens) {
+    const admin = this
     const { refreshToken, accessToken } = prevTokens
 
-    user.refreshToken = user.refreshToken.filter((token) => {
+    admin.refreshToken = admin.refreshToken.filter((token) => {
         return token.token !== refreshToken
     })
 
-    user.accessToken = user.accessToken.filter((token) => {
+    admin.accessToken = admin.accessToken.filter((token) => {
         return token.token  !== accessToken
     })
 
-    await user.save()
+    await admin.save()
 }
 
-module.exports = mongoose.models.User || mongoose.model('User', userSchema)
+module.exports = mongoose.models.Admin || mongoose.model('Admin', adminSchema)

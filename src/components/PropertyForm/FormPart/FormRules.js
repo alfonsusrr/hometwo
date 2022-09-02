@@ -1,9 +1,9 @@
 import FormSection from "../FormSection";
 import FormItem from "../FormItem";
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef} from "react";
 
-export default function FormRules(props) {
-    const { handleChangeFormInput, formInput} = props
+export default function FormRules (props) {
+    const { handleChangeFormInput, formInput, validityFormInput, isAlertOn, id} = props
 
     const [rulesFetched, setRulesFetched] = useState(false)
 
@@ -41,7 +41,7 @@ export default function FormRules(props) {
     }, [])
 
     return (
-        <FormSection title="Rules and Agreement">
+        <FormSection title="Rules and Agreement" id={id}>
             <FormItem title="Rules" description="checklist the following rules or give your own rules that client need to obey">
                 {
                     formInput.rules.listedRules.map((rule, i) => {
@@ -90,6 +90,31 @@ export default function FormRules(props) {
                     }}
                 ></textarea>
             </FormItem>
+            <div>
+                <div className="flex items-center gap-2">
+                    <input 
+                        type="checkbox" 
+                        value={formInput?.rules?.agreement} 
+                        className="rounded-md w-4 h-4 cursor-pointer"
+                        onChange={(e) => {
+                            handleChangeFormInput({
+                                rules: {
+                                    ...formInput.rules,
+                                    agreement: e.target.checked ? true : false
+                                }
+                            })
+                        }}
+                    ></input>
+                    <div className="property-form__agreement">
+                        By submitting, I have read and agree with Hometwo privacy policy and terms of service.
+                    </div>
+                </div>
+                { !validityFormInput?.rules?.agreement && isAlertOn &&
+                    <div className="property-form-item__alert" >
+                        Please check the button above
+                    </div>
+                }
+            </div>
         </FormSection>
     )
 }

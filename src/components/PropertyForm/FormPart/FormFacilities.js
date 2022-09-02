@@ -3,7 +3,7 @@ import FormItem from "../FormItem";
 import { useState, useEffect } from "react";
 
 export default function FormFacilities(props) {
-    const { handleChangeFormInput, formInput} = props
+    const { handleChangeFormInput, formInput, validityFormInput, isAlertOn, id} = props
 
     const [facilitiesFetched, setFacilitiesFetched] = useState(false)
     useEffect(() => {
@@ -37,7 +37,7 @@ export default function FormFacilities(props) {
             })
     }, [])
     return (
-        <FormSection title="Facilities and Features">
+        <FormSection title="Facilities and Features" id={id}>
             <FormItem title="Amenities" description="select basic facilities that will be included in the property">
                 <div className="property-form__grid-checkbox">
                     {

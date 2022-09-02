@@ -3,7 +3,7 @@ import FormItem from "../FormItem";
 import ImageInput from "../../ui/ImageInput";
 
 export default function FormPictures(props) {
-    const { handleChangeFormInput, formInput} = props
+    const { handleChangeFormInput, formInput, validityFormInput, isAlertOn, id} = props
 
     // ---- Image Input
     const handleAddRoomImage = (file, pos) => {
@@ -75,13 +75,23 @@ export default function FormPictures(props) {
     }
 
     return (
-        <FormSection title="Add Picture">
-            <FormItem title="Photos of the room" description="add photo(s) of the main room">
-                <div className="grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
+        <FormSection title="Add Picture" id={id}>
+            <FormItem 
+                title="Photos of the room" 
+                description="add photo(s) of the main room"
+                onAlert={!validityFormInput?.pictures?.room && isAlertOn}
+            >
+                { !validityFormInput?.pictures?.room && isAlertOn &&
+                    <div className="property-form-item__alert mb-2">
+                        You must add at least one photo of the room
+                    </div>
+                }
+                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
                     {
                         Array.apply(null, Array(6)).map((_, i) => {
                             return (
                                 <ImageInput 
+                                    key={`room-image-${i}`}
                                     image={formInput?.pictures?.room.length < i + 1 ? null : formInput?.pictures?.room[i]} 
                                     setImage={(file) => {handleAddRoomImage(file, i)}} 
                                     deleteImage={() => {handleRemoveRoomImage(i)}}
@@ -91,12 +101,22 @@ export default function FormPictures(props) {
                     }
                 </div>
             </FormItem>
-            <FormItem title="Photos of the property" description="add photo(s) of kitchen, bathroom, outdoor area, etc">
-                <div className="grid grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
+            <FormItem 
+                title="Photos of the property" 
+                description="add photo(s) of kitchen, bathroom, outdoor area, etc"
+                onAlert={!validityFormInput?.pictures?.property && isAlertOn}
+            >
+                { !validityFormInput?.pictures?.property && isAlertOn &&
+                    <div className="property-form-item__alert mb-2">
+                        You must add at least one photo of the property
+                    </div>
+                }
+                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3">
                     {
                         Array.apply(null, Array(6)).map((_, i) => {
                             return (
                                 <ImageInput 
+                                    key={`property-image-${i}`}
                                     image={formInput?.pictures?.property.length < i + 1 ? null : formInput?.pictures?.property[i]} 
                                     setImage={(file) => {handleAddPropertyImage(file, i)}} 
                                     deleteImage={() => {handleRemovePropertyImage(i)}}

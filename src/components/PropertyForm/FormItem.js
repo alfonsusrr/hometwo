@@ -1,5 +1,5 @@
 export default function FormItem (props) {
-    const {title, description, children} = props
+    const {title, description, children, alert, onAlert} = props
     return (
         <div className="property-form__section__items">
             <div className="property-form__section__item">
@@ -11,8 +11,13 @@ export default function FormItem (props) {
                         {description}
                     </div>
                 </div>
-                <div className="property-form-item__input">
+                <div className={`property-form-item__input ${onAlert ? "alert" : ""}`}>
                     {children}
+                    { onAlert &&
+                    <div className="property-form-item__alert">
+                        {alert}
+                    </div>
+                    }
                 </div>
             </div>
         </div>

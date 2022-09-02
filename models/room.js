@@ -1,6 +1,15 @@
 const mongoose = require('mongoose')
 
 const roomSchema = new mongoose.Schema({
+    owner: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'user',
+        required: false
+    },
+    contact: {
+        type: String,
+        required: false,
+    },
     name: {
         type: String,
         required: true,
@@ -21,11 +30,71 @@ const roomSchema = new mongoose.Schema({
     country: {
         type: String,
         required: true,
-        default: 'US'
+        default: 'United States'
     }, 
     state: {
         type: String,
-        required
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    lat: {
+        type: Number,
+        required: true
+    },
+    lng: {
+        type: Number,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true,
+    }, 
+    school: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'UniversityList'
+    }],
+    facilities: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Facility'
+    }],
+    startDate: {
+        type: Date,
+        required: true,
+    },
+    endDate: {
+        type: Date,
+        required: true,
+    },
+    price: {
+        type: Number,
+        require: true
+    },
+    additionalPrice: [{
+        description: {
+            type: String,
+            required: true,
+        },
+        price: {
+            type: Number,
+            require: true
+        },
+    }],
+    roomPictures: [{
+        type: String,
+    }],
+    propertyPictures: [{
+        type: String,
+    }],
+    listedRules: [{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Rule'
+    }],
+    additionalRules: {
+        type: String,
+        required: false,
     }
 })
 

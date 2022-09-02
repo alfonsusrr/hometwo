@@ -1,7 +1,7 @@
 export default function FormSection (props) {
-    const { title, children } = props
+    const { title, children, id } = props
     return (
-        <div className="property-form__section">
+        <div className="property-form__section" id={id}>
             <div className="property-form__section__title">
                 {title}
             </div>
