@@ -9,12 +9,14 @@ import { app, db } from '../../../firebase/firebaseConfig'
 import { toggleAuthBox, logOut } from '../../features/reducers/authReducer';
 import AuthModal from '../AuthModal/AuthModal';
 import SearchBar from '../ui/SearchBar';
+import { logOut as adminLogOut } from '../../features/reducers/adminReducer';
 
 export default function Header(props) {
     const {type, scroll} = props
     const [isProfileClosed, setIsProfileClosed] = useState(true)
     const router = useRouter()
     const authInfo = useSelector((state) => state.auth)
+    const adminInfo = useSelector((state) => state.admin)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -29,6 +31,12 @@ export default function Header(props) {
         }
     }
 
+    const handleAdminProfileClick = () => {
+        if (adminInfo.isLoggedIn) {
+            setIsProfileClosed(!isProfileClosed)
+        }
+    }
+
     const handleLogout = async () => {
         await setIsProfileClosed(true)
         await dispatch(logOut())
@@ -36,7 +44,23 @@ export default function Header(props) {
         router.push({
             pathname: '/home'
         })
+    }
 
+    const handleAdminLogout = async () => {
+        await setIsProfileClosed(true)
+        await dispatch(adminLogOut())
+
+        router.push({
+            pathname: '/admin'
+        })
+    }
+
+    const handleAdminSettings = async () => {
+        await setIsProfileClosed(true)
+
+        router.push({
+            pathname: '/admin/account'
+        })
     }
 
     return (
@@ -47,8 +71,13 @@ export default function Header(props) {
                         <Image src="/images/logo-transparent.png" layout='fill' objectFit='contain' ></Image>
                     </div>
                     { type !== "landing" &&
-                    <h1 className="header__title">
-                        HomeTwo
+                    <h1 className="header__title flex">
+                        HomeTwo 
+                        {type === "admin" &&
+                            <div className="text-2xl font-light pl-2 select-none">
+                                administrator
+                            </div>
+                        }
                     </h1>
                     }
 
@@ -62,11 +91,11 @@ export default function Header(props) {
             {
                 type !== "owner" && type !== "help" && type !== "landing" && type !== "admin" && <SearchBar/>
             }
-            { type !== "landing" &&
+            { type !== "admin" &&
             <div className="header__nav">
                 <a href="/help" className="header__nav__list">Help Center</a>
                 <a href="/contact" className="header__nav__list">Contact Us</a>
-                { type !== "landing" &&
+                { !["landing", "help"].includes(type) &&
                 <div className="nav__profile-box">
                     <div className={`nav__profile ${authInfo.isLoggedIn ? "logged-in" : ""}`} onClick={handleProfileClick}>
                         <FontAwesomeIcon icon={faUser} className="mr-2"></FontAwesomeIcon>
@@ -93,7 +122,35 @@ export default function Header(props) {
                 }
             </div>
             }
-            <AuthModal></AuthModal>
+            { type === "admin" &&
+                <div className="header__nav">
+                    <div className="nav__profile-box">
+                        <div className={`nav__profile ${authInfo.isLoggedIn ? "logged-in" : ""}`} onClick={handleAdminProfileClick}>
+                            <FontAwesomeIcon icon={faUser} className="mr-2"></FontAwesomeIcon>
+                            <div className="nav__profile-text">
+                                {adminInfo.isLoggedIn ? adminInfo.user.name : 'Login'}
+                            </div>
+                            
+                            {
+                                !adminInfo.isLoggedIn ? '' :
+                                <FontAwesomeIcon icon={isProfileClosed ? faAngleDown : faAngleUp} className="ml-2"></FontAwesomeIcon>
+                            }
+                        </div>
+                        <div className={`profile-dropdown ${isProfileClosed ? "closed" : ""}`}>
+                            <div className='profile-dropdown__item' onClick={handleAdminSettings}>
+                                Settings
+                            </div>
+                            <div className='profile-dropdown__item' onClick={handleAdminLogout}>
+                                Logout
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }      
+            {
+                !["landing", "help"].includes(type) &&
+                <AuthModal></AuthModal>
+            }     
         </div>
     )
 }

@@ -175,21 +175,6 @@ export const logOut = createAsyncThunk('users/logout', async() => {
     }
 })
 
-export const refeshToken = createAsyncThunk('users/refreshToken', async () => {
-    const response = await fetch('/api/user/refreshToken', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    })
-
-    const result = await response.json()
-    if (!result.success) {
-        throw new Error(result.message)
-    }
-})
-
 const authReducer = createSlice({
     name: 'auth',
     initialState,

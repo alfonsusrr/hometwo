@@ -6,7 +6,7 @@ export default function AdminDashboard() {
         <div className="container">
             <Header type="admin"></Header>
             <Head>
-                <title>HomeTwo Admin | Dashboard</title>
+                <title>HomeTwo Admin | Account Settings</title>
                 <link rel="icon" href="/images/favicon.png" />
             </Head>
             <Footer></Footer>
