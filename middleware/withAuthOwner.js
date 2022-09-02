@@ -5,8 +5,8 @@ const { getCookie, hasCookie } = require('cookies-next')
 const dbConnect = require('../db/mongoose')
 
 const withAuthOwner = (handler) => {
-    await dbConnect()
     return async (req, res) => {
+        await dbConnect()
         let token
 
         if (hasCookie('access-token', { req, res })) {
