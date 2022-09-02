@@ -9,6 +9,10 @@
         transition: background-color 0.2s ease-in;
     }
 
+    .header.admin {
+        @apply bg-black
+    }
+
     .header__logo {
         @apply ml-12 lg:ml-20 xl:ml-32 mr-3 relative h-12 w-12
     }

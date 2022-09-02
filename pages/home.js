@@ -1,6 +1,7 @@
 import Head from "next/head";
 import OptInModal from "../src/components/OptIn/OptInModal";
 import PlacesList from "../src/components/DisplayPlaces/PlacesList";
+import { useRouter } from "next/router"
 import Header from '../src/components/Layout/Header';
 import Footer from '../src/components/Layout/Footer'
 import { useState, useEffect } from "react";
@@ -16,13 +17,14 @@ export default function Home() {
         setOptedIn(true)
     }
 
+    const router = useRouter()
     const dispatch = useDispatch()
     const authInfo = useSelector((state) => state.auth)
     const [fetched, setFetched] = useState(authInfo.hasFetched)
 
     useEffect(() => {
         fetchUser({
-            dispatch, authInfo, fetched, setFetched, 
+            router, dispatch, authInfo, fetched, setFetched, 
             role: null
         })
     }, [fetched])

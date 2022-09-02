@@ -35,6 +35,7 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.generateRefreshToken = async function(prevToken, role) {
     const user = this
 
+    // Retrieve all tokens
     let newTokens = [...user.refreshToken]
     if (prevToken) {
         newTokens = newTokens.filter((token) => {
@@ -44,8 +45,9 @@ userSchema.methods.generateRefreshToken = async function(prevToken, role) {
 
     const token = jwt.sign({ uid: user.uid, role }, process.env.JWT_SECRET, { expiresIn: '60d'})
 
-    user.refreshToken = newTokens.concat({ token })
-    await user.save()
+
+    const User = mongoose.models.User || mongoose.model('User', userSchema)
+    await User.updateOne({ uid: user.uid }, { refreshToken: newTokens.concat({ token })})
 
     return token
 }
@@ -61,8 +63,8 @@ userSchema.methods.generateAccessToken = async function(prevToken, role) {
     }
     const token = jwt.sign({ uid: user.uid, role }, process.env.JWT_SECRET, { expiresIn: '1d'})
 
-    user.accessToken = newTokens.concat({ token })
-    await user.save()
+    const User = mongoose.models.User || mongoose.model('User', userSchema)
+    await User.updateOne({ uid: user.uid }, { accessToken: newTokens.concat({ token })})
 
     return token
 }

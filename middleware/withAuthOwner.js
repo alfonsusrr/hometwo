@@ -2,8 +2,10 @@ const User = require('../models/user')
 const Admin = require('../models/admin')
 const jwt = require('jsonwebtoken')
 const { getCookie, hasCookie } = require('cookies-next')
+const dbConnect = require('../db/mongoose')
 
 const withAuthOwner = (handler) => {
+    await dbConnect()
     return async (req, res) => {
         let token
 

@@ -5,7 +5,7 @@ import Head from "next/head"
 export default function AdminPage() {
     return (
         <div className="container">
-            <Header type="help"></Header>
+            <Header type="admin"></Header>
             <Head>
                 <title>HomeTwo Admin</title>
                 <link rel="icon" href="/images/favicon.png" />

@@ -1,51 +1,59 @@
 import { fetchUserData, toggleAuthBox } from "../features/reducers/authReducer"
 import fetchAPI from "./fetchAPI"
-import { useRouter } from "next/router"
-import { useSelector, useDispatch } from "react-redux"
+
+// Fetched: have fetched user API
+// Role: role that need to be authenticated
 
 const fetchUser = async({ router, dispatch, authInfo, fetched, setFetched, role }) => {
     const fetchUserAPI = async () => {
-        if (!authInfo.isLoggedIn && !authInfo.logRequest) {
-            // await setIsFetching(true)
-            // await setIsFetching(false)
-            await fetchAPI({
-                dispatch, 
-                action: fetchUserData,
-                args: {}
-            })
-            await setFetched(true)
-        }  
+        // await setIsFetching(true)
+        // await setIsFetching(false)
+        const result = await fetchAPI({
+            dispatch, 
+            action: fetchUserData,
+            args: {}
+        })
+        return result
     }
 
-    const redirectPageByRole = async () => {
-        if (role === null ) {
-            return 
+    // Redirect after authetiation successful
+    const redirectPageByRole = async (fetchedRole) => {
+        // if the page doesn't need any authorization
+        if (role === null) {
+            return
         }
-
-        if (fetched && authInfo.user?.role !== role) {
+        // if fetching failed (invalid authentication)
+        if (fetchedRole === null) {
             await router.push({
-                pathname: '/'
+                pathname: '/home'
             })
             if (!authInfo.isLoggedIn) {
                 dispatch(toggleAuthBox())
             }
+        // if the role authenticated is not authorized to access the page
+        } else if (role !== fetchedRole) {
+            await router.push({
+                pathname: '/home'
+            })
         }
     }
-
     if (!fetched) {
-        await fetchUserAPI().then(async () => {
-            await setFetched(true)
-            redirectPageByRole() 
-        }, async(e) => {
-            if (e === 'Unauthorized') {
-                await setFetched(true)
-                redirectPageByRole() 
-            }
-        })
+        try {
+            const result = await fetchUserAPI()
+            setFetched(true)
+            redirectPageByRole(result.res.role)
+        } catch({ err }) {
+            redirectPageByRole(null)
+        }
     } else {
-        redirectPageByRole()
+        // if the role authenticated (has fetched before) is not authorized
+        if (role !== authInfo.user.role) {
+            await router.push({
+                pathname: '/home'
+            })
+        }
     }
-    return true
+    return
 }
 
 export default fetchUser

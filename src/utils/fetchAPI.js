@@ -3,16 +3,19 @@ import { refreshAccessToken } from '../features/reducers/authReducer'
 const fetchAPI = async ({ dispatch, action, args }) => {
     return new Promise((resolve, reject) => {
         dispatch(action(args)).unwrap()
-            .then(() => {
-                resolve()
+            .then((res) => {
+                resolve({ err: '', res})
             })
             .catch((e) => {
                 dispatch(refreshAccessToken()).unwrap()
                     .then(() => {
-                        dispatch(action(args))
+                        dispatch(action(args)).unwrap()
+                        .then((res) => {
+                            resolve({ err: '', res})
+                        })
                     })
                     .catch((e) => {
-                        reject("Unauthorized")
+                        reject({ err: "Unauthorized", res: null})
                     })
                 })
     })

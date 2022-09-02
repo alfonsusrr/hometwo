@@ -34,13 +34,13 @@ export default function Header(props) {
         await dispatch(logOut())
 
         router.push({
-            pathname: '/'
+            pathname: '/home'
         })
 
     }
 
     return (
-        <div className={`header ${type === "landing" && !scroll ? "landing" : ""}`}>
+        <div className={`header ${type === "landing" && !scroll ? "landing" : ""} ${type === "admin" ? "admin" : ""}`}>
             <Link href="/">
                 <a className="flex items-center">
                     <div className="header__logo">
@@ -60,7 +60,7 @@ export default function Header(props) {
                 </a>
             </Link>
             {
-                type !== "owner" && type !== "help" && type !== "landing" && <SearchBar/>
+                type !== "owner" && type !== "help" && type !== "landing" && type !== "admin" && <SearchBar/>
             }
             { type !== "landing" &&
             <div className="header__nav">

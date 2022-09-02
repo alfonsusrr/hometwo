@@ -38,8 +38,8 @@ adminSchema.methods.generateRefreshToken = async function(prevToken, role) {
 
     const token = jwt.sign({ uid: admin.uid, role }, process.env.JWT_SECRET, { expiresIn: '60d'})
 
-    admin.refreshToken = newTokens.concat({ token })
-    await admin.save()
+    const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema)
+    await Admin.updateOne({ uid: user.uid }, { refreshToken: newTokens.concat({ token })})
 
     return token
 }
@@ -55,8 +55,8 @@ adminSchema.methods.generateAccessToken = async function(prevToken, role) {
     }
     const token = jwt.sign({ uid: admin.uid, role }, process.env.JWT_SECRET, { expiresIn: '1d'})
 
-    admin.accessToken = newTokens.concat({ token })
-    await admin.save()
+    const Admin = mongoose.models.Admin || mongoose.model('Admin', adminSchema)
+    await Admin.updateOne({ uid: user.uid }, { accessToken: newTokens.concat({ token })})
 
     return token
 }

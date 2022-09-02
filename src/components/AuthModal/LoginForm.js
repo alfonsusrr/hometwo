@@ -136,7 +136,7 @@ export default function LoginForm (props) {
                     })
                 } else if (result?.role === 'customer') {
                     router.push({
-                        pathname: '/user'
+                        pathname: '/home'
                     })
                 }
             }).catch((err) => {
