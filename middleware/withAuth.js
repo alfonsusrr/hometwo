@@ -7,14 +7,14 @@ const withAuth = (handler) => {
     return async (req, res) => {
         await dbConnect()
         let token
-        if (hasCookie('access-token', { req, res })) {
-            token = getCookie('access-token', { req, res})
+        if (hasCookie('access_token', { req, res })) {
+            token = getCookie('access_token', { req, res})
         }
-
+        
         if (!token) {
             return res.status(401).json({
                 success: false,
-                message: 'Unauthorized. Plase log in'
+                message: 'Unauthorized'
             })
         }
 

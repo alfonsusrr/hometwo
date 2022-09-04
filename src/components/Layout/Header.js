@@ -5,14 +5,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { app, db } from '../../../firebase/firebaseConfig'
 import { toggleAuthBox, logOut } from '../../features/reducers/authReducer';
 import AuthModal from '../AuthModal/AuthModal';
 import SearchBar from '../ui/SearchBar';
 import { logOut as adminLogOut } from '../../features/reducers/adminReducer';
+import fetchUser from '../../utils/fetchUser'
+import fetchAdmin from '../../utils/fetchAdmin';
 
 export default function Header(props) {
-    const {type, scroll} = props
+    const { type, scroll, withSearchBar } = props
     const [isProfileClosed, setIsProfileClosed] = useState(true)
     const router = useRouter()
     const authInfo = useSelector((state) => state.auth)
@@ -21,7 +22,18 @@ export default function Header(props) {
 
     useEffect(() => {
         setIsProfileClosed(true)
-    }, [])
+        if (!["help", "landing", "admin"].includes(type)) {
+            fetchUser({
+                router, dispatch, authInfo, 
+                role: type === "owner" ? "owner" : null
+            })
+        } else if (type === "admin") {
+            fetchAdmin({
+                router, dispatch, adminInfo,
+                role: "admin"
+            })
+        }
+    }, [type])
 
     const handleProfileClick = () => {
         if (!authInfo.isLoggedIn) {
@@ -39,11 +51,18 @@ export default function Header(props) {
 
     const handleLogout = async () => {
         await setIsProfileClosed(true)
-        await dispatch(logOut())
 
-        router.push({
-            pathname: '/home'
-        })
+        if (type !== "admin") {
+            await dispatch(logOut())
+            router.push({
+                pathname: '/home'
+            })
+        } else {
+            await dispatch(adminLogOut())
+            router.push({
+                pathname: '/admin'
+            })
+        }
     }
 
     const handleAdminLogout = async () => {
@@ -65,7 +84,7 @@ export default function Header(props) {
 
     return (
         <div className={`header ${type === "landing" && !scroll ? "landing" : ""} ${type === "admin" ? "admin" : ""}`}>
-            <Link href="/">
+            <Link href="/home">
                 <a className="flex items-center">
                     <div className="header__logo">
                         <Image src="/images/logo-transparent.png" layout='fill' objectFit='contain' ></Image>
@@ -89,7 +108,7 @@ export default function Header(props) {
                 </a>
             </Link>
             {
-                type !== "owner" && type !== "help" && type !== "landing" && type !== "admin" && <SearchBar/>
+                withSearchBar && <SearchBar/>
             }
             { type !== "admin" &&
             <div className="header__nav">
@@ -148,7 +167,7 @@ export default function Header(props) {
                 </div>
             }      
             {
-                !["landing", "help"].includes(type) &&
+                !["landing", "help"].includes(type) && authInfo.hasFetched && !authInfo.isLoggedIn &&
                 <AuthModal></AuthModal>
             }     
         </div>

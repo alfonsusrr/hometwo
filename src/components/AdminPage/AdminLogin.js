@@ -12,7 +12,7 @@ export default function AdminLogin() {
                         Welcome Back!
                         </div>
                         <div className="text-2xl font-light">
-                            Please login to access admin panel
+                            Please login to access admin page 
                         </div>
                     </div>
                     <LoginBox type="small"></LoginBox>                   
@@ -27,7 +27,7 @@ export default function AdminLogin() {
                         Welcome Back!
                         </div>
                         <div className="text-2xl font-light">
-                            Please login to access admin panel
+                            Please login to access admin page
                         </div>
                     </div>
                 </div>

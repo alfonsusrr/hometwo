@@ -32,9 +32,7 @@ export default function LoginBox(props) {
                     })
                 }
             })
-            .catch((e) => {
-                
-            })
+            .catch((e) => {})
         }
     }
 

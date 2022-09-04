@@ -19,8 +19,8 @@ export default function LoginPage() {
         if (others) {
             await setRegisterOtherMethods(true)
         }
-        await dispatch(resetLogError())
-        await setPage(page)
+        dispatch(resetLogError())
+        setPage(page)
     }
 
     let pageComponent

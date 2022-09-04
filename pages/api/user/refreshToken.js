@@ -13,12 +13,12 @@ const handler = async (req, res) => {
     await dbConnect()
     let accessToken
     let refreshToken
-    if (hasCookie('access-token', { req, res })) {
-        accessToken = getCookie('access-token', { req, res })
+    if (hasCookie('access_token', { req, res })) {
+        accessToken = getCookie('access_token', { req, res })
     }
 
-    if (hasCookie('refresh-token', { req, res })) {
-        refreshToken = getCookie('refresh-token', { req, res})
+    if (hasCookie('refresh_token', { req, res })) {
+        refreshToken = getCookie('refresh_token', { req, res})
     } else {
         return res.status(401).json({
             success: false,
@@ -51,7 +51,7 @@ const handler = async (req, res) => {
     const newRefreshToken = await user.generateRefreshToken(refreshToken, role)
     const newAccessToken = await user.generateAccessToken(accessToken, role)
 
-    setCookie("refresh-token", newRefreshToken, {
+    setCookie("refresh_token", newRefreshToken, {
         req, res,
         httpOnly: true,
         maxAge: 60 * 24 * 60 * 60,
@@ -59,7 +59,7 @@ const handler = async (req, res) => {
         secure: process.env.NODE_ENV === 'production'? true : false
     })
 
-    setCookie("access-token", newAccessToken, {
+    setCookie("access_token", newAccessToken, {
         req, res,
         httpOnly: true,
         maxAge: 24 * 60 * 60,

@@ -1,4 +1,4 @@
-import { fetchUserData, refreshAccessToken, toggleAuthBox } from "../features/reducers/authReducer"
+import { fetchAdminData, refreshAccessToken } from "../features/reducers/adminReducer"
 
 // Fetched: have fetched user API
 // Role: role that need to be authenticated
@@ -23,27 +23,14 @@ const fetchAPI = async ({ dispatch, action, args }) => {
     })
 }
 
-const fetchUser = async({ router, dispatch, authInfo, role }) => {
+const fetchAdmin= async({ router, dispatch, adminInfo: authInfo, role }) => {
     const fetchUserAPI = async () => {
         const result = await fetchAPI({
             dispatch, 
-            action: fetchUserData,
+            action: fetchAdminData,
             args: {}
         })
         return result
-    }
-
-    // Redirect after authetiation successful
-    const redirectPageByRole = async (sessionRole) => {
-        if (role === "owner" && sessionRole !== "owner") {
-            await router.push({
-                pathname: '/home'
-            })
-        } else if (role === "customer" && sessionRole !== "customer") {
-            await router.push({
-                pathname: '/home'
-            })
-        }
     }
 
     let sessionRole = null
@@ -55,8 +42,19 @@ const fetchUser = async({ router, dispatch, authInfo, role }) => {
     } else {
         sessionRole = authInfo?.user?.role
     }
-    redirectPageByRole(sessionRole)
+
+    if (sessionRole !== "admin" && router.pathname !== "/admin") {
+        console.log("not admin")
+        await router.push("/admin")
+        return
+    }
+
+    if (router.pathname === "/admin" && sessionRole === "admin") {
+        console.log("is admin")
+        await router.push("/admin/dashboard")
+        return
+    } 
 }
 
-export default fetchUser
+export default fetchAdmin
 

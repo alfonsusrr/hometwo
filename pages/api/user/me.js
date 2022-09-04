@@ -9,7 +9,7 @@ const handler = async (req, res) => {
     const method = ['POST']
     withMethodCheck(req, res, method)
 
-    const accessToken = getCookie('access-token', { req, res })
+    const accessToken = getCookie('access_token', { req, res })
     const decoded = jwt.verify(accessToken, process.env.JWT_SECRET)
 
     const uid = decoded.uid

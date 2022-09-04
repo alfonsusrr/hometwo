@@ -7,11 +7,11 @@ const methods = ['POST']
 const handler = async (req, res) => {
     withMethodCheck(req, res, methods)
 
-    const refreshToken = getCookie('admin-refresh-token', { req, res })
-    const accessToken = getCookie('admin-access-token', { req, res })
+    const refreshToken = getCookie('admin_refresh_token', { req, res })
+    const accessToken = getCookie('admin_access_token', { req, res })
 
-    deleteCookie('admin-refresh-token', { req, res })
-    deleteCookie('admin-access-token', { req, res })
+    deleteCookie('admin_refresh_token', { req, res })
+    deleteCookie('admin_access_token', { req, res })
 
     await req.user.adminLogout({ refreshToken, accessToken })
 

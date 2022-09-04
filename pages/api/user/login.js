@@ -54,7 +54,7 @@ const handler = async (req, res) => {
     const refreshToken = await user.generateRefreshToken(null, role)
     const accessToken = await user.generateAccessToken(null, role)
     
-    setCookie("refresh-token", refreshToken, {
+    setCookie("refresh_token", refreshToken, {
         req, res,
         httpOnly: true,
         maxAge: 60 * 24 * 60 * 60,
@@ -62,7 +62,7 @@ const handler = async (req, res) => {
         secure: process.env.NODE_ENV === 'production'? true : false
     })
 
-    setCookie("access-token", accessToken, {
+    setCookie("access_token", accessToken, {
         req, res,
         httpOnly: true,
         maxAge: 24 * 60 * 60,

@@ -9,7 +9,15 @@ import { useSelector, useDispatch } from 'react-redux'
 import Cookies from 'universal-cookie'
 import fetchUser from '../src/utils/fetchUser'
 
-export default function Home() {
+export async function getServerSideProps(ctx) {
+    return {
+        props: {
+            user: {}
+        }
+    }
+}
+
+export default function Home(props) {
     const cookies = new Cookies()
     const checkOptedIn = !!cookies.get('opted-in')
     const [optedIn, setOptedIn] = useState(checkOptedIn)
@@ -17,21 +25,9 @@ export default function Home() {
         setOptedIn(true)
     }
 
-    const router = useRouter()
-    const dispatch = useDispatch()
-    const authInfo = useSelector((state) => state.auth)
-    const [fetched, setFetched] = useState(authInfo.hasFetched)
-
-    useEffect(() => {
-        fetchUser({
-            router, dispatch, authInfo, fetched, setFetched, 
-            role: null
-        })
-    }, [fetched, router, dispatch, authInfo])
-
     return (
         <div className="container">
-            <Header></Header>
+            <Header withSearchBar={true} ></Header>
             <Head>
                 <title>HomeTwo</title>
                 <link rel="icon" href="/images/favicon.png" />

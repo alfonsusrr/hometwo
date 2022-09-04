@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getIdToken, getAuth, getAdditionalUserInfo, GoogleAuthProvider, FacebookAuthProvider, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-
+import { app, db } from '../../../firebase/firebaseConfig'
 
 const initialState = {
     allowedMethod: ["google", "phone"],
@@ -211,7 +211,6 @@ const authReducer = createSlice({
             if (error.message === 'Role must be selected') {
                 state.isAuthBoxOpen = false
             }
-
             if (error.code === "auth/wrong-password") {
                 state.logError = "User credential and password don't match"
             } else if (error.code === "auth/too-many-requests") {

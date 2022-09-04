@@ -7,14 +7,14 @@ const withAuthCustomer = (handler) => {
     return async (req, res) => {
         await dbConnect()
         let token
-        if (hasCookie('access-token', { req, res })) {
-            token = getCookie('access-token', { req, res})
+        if (hasCookie('access_token', { req, res })) {
+            token = getCookie('access_token', { req, res})
         }
 
         if (!token) {
             return res.status(401).json({
                 success: false,
-                message: 'Unauthorized. Plase log in'
+                message: 'Unauthorized'
             })
         }
 
@@ -27,21 +27,21 @@ const withAuthCustomer = (handler) => {
             if (!currentUser) {
                 return res.status(401).json({
                     success: false,
-                    message: 'The token is invalid'
+                    message: 'Invalid access token'
                 })
             }
 
             if (!currentUser.isCustomer) {
                 return res.status(401).json({
                     success: false,
-                    message: 'Unauthorized user as customer'
+                    message: 'Unauthorized user role'
                 })
             }
 
             if (role !== "customer") {
                 return res.status(401).json({
                     success: false,
-                    message: 'Unauthorized user as customer'
+                    message: 'Unauthorized user role'
                 })
             }
             
@@ -50,7 +50,7 @@ const withAuthCustomer = (handler) => {
         } catch (e) {
             return res.status(401).json({
                 success: false,
-                message: 'Invalid access token, please login again'
+                message: 'Invalid access token'
             })
         }
     }

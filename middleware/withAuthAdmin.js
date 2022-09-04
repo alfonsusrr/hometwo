@@ -7,8 +7,8 @@ const withAuthAdmin = (handler) => {
     return async (req, res) => {
         await dbConnect()
         let token
-        if (hasCookie('admin-access-token', { req, res })) {
-            token = getCookie('admin-access-token', { req, res})
+        if (hasCookie('admin_access_token', { req, res })) {
+            token = getCookie('admin_access_token', { req, res})
         }
 
         if (!token) {
@@ -26,7 +26,7 @@ const withAuthAdmin = (handler) => {
             if (!currentUser) {
                 return res.status(401).json({
                     success: false,
-                    message: 'The token is invalid'
+                    message: 'Invalid access token'
                 })
             }
 

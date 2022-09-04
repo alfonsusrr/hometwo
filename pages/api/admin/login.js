@@ -33,7 +33,7 @@ const handler = async (req, res) => {
     const refreshToken = await admin.generateRefreshToken(null)
     const accessToken = await admin.generateAccessToken(null)
     
-    setCookie("admin-refresh-token", refreshToken, {
+    setCookie("admin_refresh_token", refreshToken, {
         req, res,
         httpOnly: true,
         maxAge: 60 * 24 * 60 * 60,
@@ -41,7 +41,7 @@ const handler = async (req, res) => {
         secure: process.env.NODE_ENV === 'production'? true : false
     })
 
-    setCookie("admin-access-token", accessToken, {
+    setCookie("admin_access_token", accessToken, {
         req, res,
         httpOnly: true,
         maxAge: 24 * 60 * 60,
@@ -56,7 +56,8 @@ const handler = async (req, res) => {
             user: {
                 uid: admin.uid,
                 name: admin.name,
-                level: admin.level
+                level: admin.level,
+                role: "admin"
             }
         }
     })

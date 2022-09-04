@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     user: {},
+    hasFetched: false,
     isLoggedIn: false,
     logRequest: false,
     logError: '',
@@ -41,6 +42,36 @@ export const logOut = createAsyncThunk('admin/logout', async() => {
     }
 })
 
+export const fetchAdminData = createAsyncThunk('admin/me', async() => {
+    const response = await fetch('/api/admin/me', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    })
+    const result = await response.json()
+    if (!result.success) {
+        throw new Error(result.message)
+    } else {
+        return result.data.user
+    }
+})
+
+export const refreshAccessToken = createAsyncThunk('admin/refreshToken', async() => {
+    const response = await fetch('/api/admin/refreshToken', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    const result = await response.json()
+    if (!result.success) {
+        throw new Error(result.message)
+    }
+})
+
 const adminReducer = createSlice({
     name: 'admin',
     initialState,
@@ -63,6 +94,7 @@ const adminReducer = createSlice({
             state.user = {
                 ...payload
             }
+            state.hasFetched = true
         },
         [logIn.rejected]: (state, { error }) => {
             state.logError = error.message
@@ -78,7 +110,23 @@ const adminReducer = createSlice({
         },
         [logOut.rejected]: (state, { error }) => {
             state.logRequest = false
-        }
+        },
+        [fetchAdminData.pending]: (state) => {
+            state.logRequest = true
+        },
+        [fetchAdminData.fulfilled]: (state, { payload }) => {
+            state.logRequest = false
+            state.isLoggedIn = true
+            state.user = {
+                ...payload
+            }
+            state.hasFetched = true
+        },
+        [fetchAdminData.rejected]: (state, { error }) => {
+            state.logRequest = false
+            state.isLoggedIn = false
+            state.hasFetched = true
+        },
     }
 })
 
