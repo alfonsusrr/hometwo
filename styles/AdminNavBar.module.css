@@ -1,0 +1,61 @@
+@layer components {
+    .admin-page-wrapper {
+        @apply flex items-start top-0 overflow-y-hidden h-[calc(100vh_-_6rem)] w-screen
+    }
+
+    .admin-navbar {
+        @apply bg-white w-14 h-full py-5 pl-4 flex items-start flex-col gap-2;
+        transition: width 200ms ease-in-out
+    }
+
+    .admin-navbar.expand {
+        @apply w-64
+    }
+
+    .admin-navbar__icon {
+        @apply text-xl cursor-pointer text-center w-6
+    }
+
+    .admin-navbar__group {
+        @apply text-gray-500 font-semibold font-sans opacity-0;
+        transition: all 150ms ease-in-out;
+    }
+
+    .admin-navbar__group.expand {
+        @apply opacity-100
+    }
+
+    .admin-navbar__section {
+        @apply w-[calc(100%_-_0.5rem)] cursor-pointer p-1 rounded-lg hover:bg-gray-100
+    }
+
+    .admin-navbar__section.nav-button {
+        @apply hover:bg-opacity-0
+    }
+
+    .admin-navbar__section-title {
+        @apply flex items-center
+    }
+
+    .admin-navbar__section-title__icon.menu-bars {
+        @apply ml-0;
+        transition: margin-left 200ms ease-in;
+    }
+
+    .admin-navbar.expand .admin-navbar__section-title__icon.menu-bars {
+        @apply ml-auto mr-4;
+    }
+
+    .admin-navbar__section-title__icon {
+        @apply h-5 w-6 
+    }
+
+    .admin-navbar__section-title__text {
+        @apply text-lg pl-4 w-40 truncate
+    }
+
+    .admin-container {
+        @apply overflow-y-scroll bg-slate-50 w-full h-full p-8 overflow-x-scroll
+    }
+
+}

@@ -1,18 +1,17 @@
-import Header from "../../src/components/Layout/Header"
-import Footer from "../../src/components/Layout/Footer"
+import Header from "../../../src/components/Layout/Header"
+import Footer from "../../../src/components/Layout/Footer"
 import Head from "next/head"
-import LoaderAuth from "../../src/components/LoaderAuth/LoaderAuth"
+import LoaderAuth from "../../../src/components/LoaderAuth/LoaderAuth"
 import { useSelector } from "react-redux"
-import AdminNavBar from "../../src/components/AdminNavBar/AdminNavBar"
-import MainDashboard from "../../src/components/AdminDashboard/MainDashboard"
+import AdminNavBar from "../../../src/components/AdminNavBar/AdminNavBar"
 
-export default function AdminDashboard() {
+export default function AdminRoomPage() {
     const authInfo = useSelector((state) => state.admin)
     return (
         <div className="container">
             <Header type="admin"></Header>
             <Head>
-                <title>HomeTwo Admin | Dashboard</title>
+                <title>HomeTwo Admin | Rooms</title>
                 <link rel="icon" href="/images/favicon.png" />
             </Head>
             
@@ -22,7 +21,7 @@ export default function AdminDashboard() {
                 loading={!authInfo?.hasFetched}
             >
                 <AdminNavBar>
-                    <MainDashboard></MainDashboard>
+                    
                 </AdminNavBar>
             </LoaderAuth>
             <Footer></Footer>

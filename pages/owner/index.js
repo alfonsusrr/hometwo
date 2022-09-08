@@ -5,12 +5,10 @@ import Footer from '../../src/components/Layout/Footer'
 import Head from "next/head"
 import Link from "next/link"
 import { useSelector, useDispatch} from "react-redux"
-import { fetchUserData, toggleAuthBox } from '../../src/features/reducers/authReducer'
 import NavBarOwner from '../../src/components/ui/NavBarOwner'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import LoaderAuth from "../../src/components/LoaderAuth/LoaderAuth";
-import fetchUser from '../../src/utils/fetchUser'
 
 
 export default function Dashboard() {
@@ -19,15 +17,6 @@ export default function Dashboard() {
     const router = useRouter()
     const dispatch = useDispatch()
     const authInfo = useSelector((state) => state.auth)
-
-    // useEffect(() => {
-    //     fetchUser({
-    //         router, dispatch, authInfo, fetched, setFetched, 
-    //         role: "owner"
-    //     })
-    // }, [fetched, router, dispatch, authInfo])
-
-    // -------
 
     const [expand, setExpand] = useState(true)
     

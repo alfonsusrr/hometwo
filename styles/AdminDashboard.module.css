@@ -1,0 +1,33 @@
+@layer components {
+    .dashboard-section {
+        @apply my-4
+    }
+
+    .dashboard-section__title {
+        @apply font-sans text-xl font-bold my-3
+    }
+
+    .dashboard-card {
+        @apply bg-white rounded-lg shadow-md p-3
+    }
+
+    .dashboard-card.small {
+        @apply w-64
+    }
+
+    .dashboard-card__title {
+        @apply font-sans font-bold text-base text-gray-700
+    }
+
+    .dashboard-card__content {
+        @apply flex items-center
+    }
+
+    .dashboard-card__icon {
+        @apply w-10 h-10 rounded-full text-lg text-center py-2
+    }
+
+    .dashboard-card__value {
+        @apply text-3xl my-3 ml-auto font-sans font-semibold
+    }
+}

@@ -17,7 +17,11 @@ module.exports = {
         'dark-primary-gray': '#23272E',
         'dark-brown': '#32201D',
         'alert': '#FF5D62',
-        'secondary-alert': '#ffd4d4'
+        'secondary-alert': '#ffd4d4',
+        'pastel-red': '#ffcfcc',
+        'pastel-blue': '#cceaff',
+        'pastel-green': '#cdffcc',
+        'pastel-yellow': '#fffad4'
       },
       spacing: {
         's-size': '0.8rem',
