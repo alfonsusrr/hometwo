@@ -31,7 +31,6 @@ const handler = async (req, res) => {
     const isOwner = role === 'owner'
 
     const roles = { isCustomer, isOwner }
-    console.log(roles)
     // Add user information to database
     try {
         const userRecord = await getAuth().updateUser(uid, {
@@ -58,10 +57,16 @@ const handler = async (req, res) => {
         if (user) {
             user.isCustomer = user.isCustomer || isCustomer
             user.isOwner = user.isOwner || isOwner
+            user.name = name
+            user.email = email
+            user.phoneNumber = phoneNumber
             user.save()
         } else {
             user = new User({
                 uid,
+                name, 
+                email, 
+                phoneNumber,
                 ...roles  
             })
             user.save()

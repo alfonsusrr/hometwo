@@ -13,6 +13,7 @@
 @import url('./AdminLogin.module.css');
 @import url('./AdminNavBar.module.css');
 @import url('./AdminDashboard.module.css');
+@import url('./AdminTable.module.css');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 @tailwind base;

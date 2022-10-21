@@ -53,7 +53,13 @@ export default function LoginBox(props) {
                         Username
                     </div>
                 </div>
-                <input type="text" placeholder="Your username" value={username} onChange={(e) => {setUsername(e.target.value)}}></input>
+                <input type="text" placeholder="Your username" value={username} onChange={(e) => {setUsername(e.target.value)}}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleLogin()
+                        }
+                    }}
+                ></input>
             </div>
             <div className="login-box__input">
                 <div className={`login-box__label ${type === "small" ? "light" : ""}`}>
@@ -62,7 +68,13 @@ export default function LoginBox(props) {
                         Password
                     </div>
                 </div>
-                <input type="password" placeholder="Your password" value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
+                <input type="password" placeholder="Your password" value={password} onChange={(e) => {setPassword(e.target.value)}}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleLogin()
+                        }
+                    }}
+                ></input>
             </div>
             <div className="flex items-center">
                 <button className="primary-button bg-primary-orange ml-auto" onClick={handleLogin}>Login</button>

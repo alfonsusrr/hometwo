@@ -1,0 +1,312 @@
+[{
+  "_id": {
+    "$oid": "6310e1983d25d6a01885af51"
+  },
+  "owner": {
+    "$oid": "6319d63c5a2514ed14b31eab"
+  },
+  "contact": "",
+  "name": "House Residence",
+  "type": "house",
+  "description": "This is a house",
+  "hosted": true,
+  "country": "United States",
+  "state": "Washington",
+  "city": "Seattle",
+  "lat": 47.6062095,
+  "lng": -122.3320708,
+  "address": "909 5th Ave, Seattle, WA 98164, USA",
+  "school": [
+    {
+      "$oid": "62f283f995174a825294b96b"
+    }
+  ],
+  "facilities": [
+    {
+      "$oid": "62f29db73dc97da3dfdcb6da"
+    },
+    {
+      "$oid": "62f29db73dc97da3dfdcb6df"
+    }
+  ],
+  "startDate": {
+    "$date": {
+      "$numberLong": "1661990400000"
+    }
+  },
+  "endDate": {
+    "$date": {
+      "$numberLong": "1664496000000"
+    }
+  },
+  "price": 300,
+  "additionalPrice": [
+    {
+      "description": "Deposit",
+      "price": 11,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3a"
+      }
+    },
+    {
+      "description": "Utilities",
+      "price": 111,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3b"
+      }
+    }
+  ],
+  "roomPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/80ea233f-a8d1-4267-81f4-a173eede11d8_HK3gn1jYB"
+  ],
+  "propertyPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/a822f264-cf77-4db1-bd35-db81b52b84a9_qFExPJVnW"
+  ],
+  "listedRules": [
+    {
+      "$oid": "630f676b94ed34c42d4cf4b7"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4b9"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4ba"
+    }
+  ],
+  "additionalRules": "This is more rules",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6310e1983d25d6a01885af52"
+  },
+  "owner": {
+    "$oid": "6319d63c5a2514ed14b31eab"
+  },
+  "contact": "",
+  "name": "House Residence",
+  "type": "house",
+  "description": "This is a house",
+  "hosted": true,
+  "country": "United States",
+  "state": "Washington",
+  "city": "Seattle",
+  "lat": 47.6062095,
+  "lng": -122.3320708,
+  "address": "909 5th Ave, Seattle, WA 98164, USA",
+  "school": [
+    {
+      "$oid": "62f283f995174a825294b96b"
+    }
+  ],
+  "facilities": [
+    {
+      "$oid": "62f29db73dc97da3dfdcb6da"
+    },
+    {
+      "$oid": "62f29db73dc97da3dfdcb6df"
+    }
+  ],
+  "startDate": {
+    "$date": {
+      "$numberLong": "1661990400000"
+    }
+  },
+  "endDate": {
+    "$date": {
+      "$numberLong": "1664496000000"
+    }
+  },
+  "price": 300,
+  "additionalPrice": [
+    {
+      "description": "Deposit",
+      "price": 11,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3a"
+      }
+    },
+    {
+      "description": "Utilities",
+      "price": 111,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3b"
+      }
+    }
+  ],
+  "roomPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/80ea233f-a8d1-4267-81f4-a173eede11d8_HK3gn1jYB"
+  ],
+  "propertyPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/a822f264-cf77-4db1-bd35-db81b52b84a9_qFExPJVnW"
+  ],
+  "listedRules": [
+    {
+      "$oid": "630f676b94ed34c42d4cf4b7"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4b9"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4ba"
+    }
+  ],
+  "additionalRules": "This is more rules",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6310e1983d25d6a01885af53"
+  },
+  "owner": {
+    "$oid": "6319d63c5a2514ed14b31eab"
+  },
+  "contact": "",
+  "name": "House Residence",
+  "type": "house",
+  "description": "This is a house",
+  "hosted": true,
+  "country": "United States",
+  "state": "Washington",
+  "city": "Seattle",
+  "lat": 47.6062095,
+  "lng": -122.3320708,
+  "address": "909 5th Ave, Seattle, WA 98164, USA",
+  "school": [
+    {
+      "$oid": "62f283f995174a825294b96b"
+    }
+  ],
+  "facilities": [
+    {
+      "$oid": "62f29db73dc97da3dfdcb6da"
+    },
+    {
+      "$oid": "62f29db73dc97da3dfdcb6df"
+    }
+  ],
+  "startDate": {
+    "$date": {
+      "$numberLong": "1661990400000"
+    }
+  },
+  "endDate": {
+    "$date": {
+      "$numberLong": "1664496000000"
+    }
+  },
+  "price": 300,
+  "additionalPrice": [
+    {
+      "description": "Deposit",
+      "price": 11,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3a"
+      }
+    },
+    {
+      "description": "Utilities",
+      "price": 111,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3b"
+      }
+    }
+  ],
+  "roomPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/80ea233f-a8d1-4267-81f4-a173eede11d8_HK3gn1jYB"
+  ],
+  "propertyPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/a822f264-cf77-4db1-bd35-db81b52b84a9_qFExPJVnW"
+  ],
+  "listedRules": [
+    {
+      "$oid": "630f676b94ed34c42d4cf4b7"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4b9"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4ba"
+    }
+  ],
+  "additionalRules": "This is more rules",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6310e1983d25d6a01885af54"
+  },
+  "owner": {
+    "$oid": "6319d63c5a2514ed14b31eab"
+  },
+  "contact": "",
+  "name": "House Residence",
+  "type": "house",
+  "description": "This is a house",
+  "hosted": true,
+  "country": "United States",
+  "state": "Washington",
+  "city": "Seattle",
+  "lat": 47.6062095,
+  "lng": -122.3320708,
+  "address": "909 5th Ave, Seattle, WA 98164, USA",
+  "school": [
+    {
+      "$oid": "62f283f995174a825294b96b"
+    }
+  ],
+  "facilities": [
+    {
+      "$oid": "62f29db73dc97da3dfdcb6da"
+    },
+    {
+      "$oid": "62f29db73dc97da3dfdcb6df"
+    }
+  ],
+  "startDate": {
+    "$date": {
+      "$numberLong": "1661990400000"
+    }
+  },
+  "endDate": {
+    "$date": {
+      "$numberLong": "1664496000000"
+    }
+  },
+  "price": 300,
+  "additionalPrice": [
+    {
+      "description": "Deposit",
+      "price": 11,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3a"
+      }
+    },
+    {
+      "description": "Utilities",
+      "price": 111,
+      "_id": {
+        "$oid": "6310e1983d25d6a01885af3b"
+      }
+    }
+  ],
+  "roomPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/80ea233f-a8d1-4267-81f4-a173eede11d8_HK3gn1jYB"
+  ],
+  "propertyPictures": [
+    "https://ik.imagekit.io/alfonsusrr/room/a822f264-cf77-4db1-bd35-db81b52b84a9_qFExPJVnW"
+  ],
+  "listedRules": [
+    {
+      "$oid": "630f676b94ed34c42d4cf4b7"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4b9"
+    },
+    {
+      "$oid": "630f676b94ed34c42d4cf4ba"
+    }
+  ],
+  "additionalRules": "This is more rules",
+  "__v": 0
+}]

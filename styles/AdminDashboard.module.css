@@ -12,7 +12,8 @@
     }
 
     .dashboard-card.small {
-        @apply w-64
+        @apply w-64;
+        min-width: 12rem;
     }
 
     .dashboard-card__title {

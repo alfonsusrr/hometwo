@@ -204,7 +204,7 @@ export default function PropertyForm() {
                 }
             }
             
-            const response = await fetch("/api/room", {
+            const response = await fetch("/api/owner/room", {
                 method: 'POST',
                 body: formData
             })

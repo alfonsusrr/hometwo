@@ -1,12 +1,12 @@
-const withMethodCheck = require('../../middleware/withMethodCheck');
+const withMethodCheck = require('../../../middleware/withMethodCheck');
 const formidable = require('formidable');
 const ImageKit = require("imagekit");
 const fs = require('fs');
 const ObjectId = require('mongoose').Types.ObjectId;
 import { v4 as uuid } from 'uuid';
-import dbConnect from '../../db/mongoose';
-import room from '../../models/room';
-import withAuthOwner from '../../middleware/withAuthOwner'
+import dbConnect from '../../../db/mongoose';
+import Room from '../../../models/room';
+import withAuthOwner from '../../../middleware/withAuthOwner'
 
 const handler = async (req, res) => {
     const method = ['POST', 'GET', 'PATCH', 'DELETE']
@@ -117,12 +117,26 @@ const handler = async (req, res) => {
             formData.owner = ObjectId(req.user._id)    
         }
 
-        const newRoom = new room(formData)
+        const newRoom = new Room(formData)
         await newRoom.save()
 
         return res.status(200).json({
             success: true,
             message: 'Room added successfully'
+        })
+    } else if (req.method === 'GET') {
+        const owner = req.user
+        const query = req.query
+        
+        const rooms = await Room.find({ ...query }).populate("listedRules facilities school")
+
+        console.log(rooms)
+        return res.status(200).json({
+            success:true,
+            message: '',
+            data: {
+                rooms: rooms
+            }
         })
     }
 }

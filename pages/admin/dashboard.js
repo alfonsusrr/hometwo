@@ -17,7 +17,7 @@ export default function AdminDashboard() {
             </Head>
             
             <LoaderAuth
-                color="000000"
+                color="#000000"
                 authorized={authInfo?.user?.role === "admin"}
                 loading={!authInfo?.hasFetched}
             >

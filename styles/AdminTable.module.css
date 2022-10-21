@@ -1,0 +1,56 @@
+@layer components {
+    .admin-table {
+        @apply mx-2 mt-1 px-4 pt-4 pb-6 bg-white rounded-lg shadow-md h-[calc(100%_-_1rem)];
+        @apply relative;
+    }
+
+    .admin-table__title {
+        @apply font-sans text-2xl font-bold
+    }
+
+    .admin-table__actions { 
+        @apply flex items-center mt-3 gap-3
+    }
+
+    .admin-table__num-items select{
+        @apply rounded-lg border-slate-200 focus:border-slate-400 ring-0
+    }
+
+    .admin-table__search {
+        @apply flex items-center gap-2
+    }
+
+    .admin-table__search input {
+        @apply rounded-lg border-slate-200 focus:border-pastel-orange focus:ring-primary-orange
+    }
+
+    .admin-table__table-section { 
+        @apply mt-5 mb-5 overflow-x-scroll w-full  relative overflow-y-scroll pb-3;
+        max-height: calc(100% - 6rem);
+        min-height: calc(100% - 6rem);
+    }
+
+    .admin-table__table {
+        @apply rounded-lg border-collapse border-y border-slate-300
+    }
+
+    .admin-table__table thead {
+        @apply sticky bg-white
+    }
+
+    .admin-table__table th, td{
+        @apply px-3 py-2 text-left border-b border-slate-300
+    }
+
+    .admin-table__icon {
+        @apply px-2 py-1 rounded-lg text-white cursor-pointer
+    }
+
+    .room-table__additional-price {
+        @apply p-1 rounded-lg mt-1
+    }
+
+    .table-small-badge {
+        @apply p-1 text-sm m-1 rounded-lg inline-block
+    }
+}

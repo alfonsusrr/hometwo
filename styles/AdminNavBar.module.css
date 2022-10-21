@@ -4,12 +4,12 @@
     }
 
     .admin-navbar {
-        @apply bg-white w-14 h-full py-5 pl-4 flex items-start flex-col gap-2;
+        @apply bg-white w-20 h-full py-5 pl-4 flex items-start flex-col gap-2 overflow-y-scroll overflow-x-hidden;
         transition: width 200ms ease-in-out
     }
 
     .admin-navbar.expand {
-        @apply w-64
+        @apply w-64 pr-0
     }
 
     .admin-navbar__icon {
@@ -26,7 +26,7 @@
     }
 
     .admin-navbar__section {
-        @apply w-[calc(100%_-_0.5rem)] cursor-pointer p-1 rounded-lg hover:bg-gray-100
+        @apply w-[calc(100%_-_0.5rem)] cursor-pointer p-1 rounded-lg hover:bg-gray-100 px-2
     }
 
     .admin-navbar__section.nav-button {
@@ -34,7 +34,7 @@
     }
 
     .admin-navbar__section-title {
-        @apply flex items-center
+        @apply flex items-center pr-2
     }
 
     .admin-navbar__section-title__icon.menu-bars {
@@ -43,11 +43,11 @@
     }
 
     .admin-navbar.expand .admin-navbar__section-title__icon.menu-bars {
-        @apply ml-auto mr-4;
+        @apply ml-auto -mr-8;
     }
 
     .admin-navbar__section-title__icon {
-        @apply h-5 w-6 
+        @apply h-5 w-12
     }
 
     .admin-navbar__section-title__text {

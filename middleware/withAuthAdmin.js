@@ -7,6 +7,7 @@ const withAuthAdmin = (handler) => {
     return async (req, res) => {
         await dbConnect()
         let token
+        
         if (hasCookie('admin_access_token', { req, res })) {
             token = getCookie('admin_access_token', { req, res})
         }

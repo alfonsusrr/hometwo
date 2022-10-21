@@ -1,9 +1,14 @@
 const mongoose = require('mongoose')
+const Rules = require('./rule')
+const UniversityList = require('./universityList')
+const StateList = require('./stateList')
+const Facility = require('./facility')
+const User = require('./user')
 
 const roomSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'user',
+        ref: 'User',
         required: false
     },
     contact: {
@@ -13,6 +18,14 @@ const roomSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+    },
+    active: {
+        type: Boolean,
+        default: true
+    },
+    consent: {
+        type: Boolean,
+        default: true
     },
     type: {
         type: String,
@@ -50,7 +63,7 @@ const roomSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        required: true,
+        required: false,
     }, 
     school: [{
         type: mongoose.Schema.Types.ObjectId, 
